@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="649.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="609.0" layoutX="-1.0" layoutY="6.0" stroke="WHITE" strokeType="INSIDE" width="1065.0" />
+      <Button fx:id="btnUpload" layoutX="64.0" layoutY="405.0" mnemonicParsing="false" onAction="#onClickUpload" prefHeight="44.0" prefWidth="227.0" text="Upload" />
+      <Button fx:id="btnBrowse" layoutX="300.0" layoutY="405.0" mnemonicParsing="false" onAction="#onClickBrowse" prefHeight="44.0" prefWidth="124.0" text="Browse" />
+      <MenuBar prefHeight="29.0" prefWidth="1063.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Text layoutX="64.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Insert instructions here" wrappingWidth="533.6708984375" />
+      <Text layoutX="64.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Insert instructions here" wrappingWidth="533.6708984375" />
+      <Text layoutX="64.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Insert instructions here" wrappingWidth="533.6708984375" />
+      <Button fx:id="btnNext" layoutX="849.0" layoutY="527.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="44.0" prefWidth="184.0" text="Next &gt;&gt;" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#868585" height="294.0" layoutX="278.0" layoutY="64.0" stroke="#656262" strokeType="INSIDE" width="534.0" />
+      <Text layoutX="466.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PREVIEW IMAGE HERE" wrappingWidth="157.6708984375" />
+   </children>
+</AnchorPane>
