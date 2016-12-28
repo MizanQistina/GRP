@@ -10,19 +10,14 @@ public class LoadImage {
 	
 	public static void main( String[] args ){
 		
-		String address = "";//enter address to the uploaded image here
+		String address = "";// Enter address to the uploaded image here
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		newImage = Highgui.imread(address,Highgui.CV_LOAD_IMAGE_COLOR);
 		
-		Image_Sharpening dest = new Image_Sharpening(newImage);
+		PreProcessing dest = new PreProcessing(newImage);
 		
-		Image_Brigthness dest1 = new Image_Brigthness(newImage);
-		
-		//check project file to see the sharpened image
-		Highgui.imwrite("sharped.jpg",dest.imageSharpening());
-		
-		//check project file to see the darkened image
-		Highgui.imwrite("darkened.jpg",dest1.imageSharpening());
+		// Check project file to see the sharpened image
+		Highgui.imwrite("preprocess.jpg",dest.preProcessing());
 		
 	}
 }
