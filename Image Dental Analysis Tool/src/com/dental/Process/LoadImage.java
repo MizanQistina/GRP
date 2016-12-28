@@ -16,8 +16,13 @@ public class LoadImage {
 		
 		Image_Sharpening dest = new Image_Sharpening(newImage);
 		
+		Image_Brigthness dest1 = new Image_Brigthness(newImage);
+		
+		//check project file to see the sharpened image
 		Highgui.imwrite("sharped.jpg",dest.imageSharpening());
-		//check project file to see the enhance image
-
+		
+		//check project file to see the darkened image
+		Highgui.imwrite("darkened.jpg",dest1.imageSharpening());
+		
 	}
 }
