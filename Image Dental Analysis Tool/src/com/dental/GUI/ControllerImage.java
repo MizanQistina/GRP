@@ -31,11 +31,29 @@ public class ControllerImage extends Main implements Initializable {
 	}	
 		
 	@FXML
-	private void onClickBrowse() {
-		
-		FileChooser chooser = new FileChooser();
-	    chooser.setTitle("Choose image");
-	    File file = chooser.showOpenDialog(new Stage());
+	void onClickBrowse() throws IOException
+	{		
+	FileChooser chooser = new FileChooser();
+    	chooser.setTitle("Choose image");
+    	chooser.getExtensionFilters().add(
+    	new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")//File format restrictions
+    	);             		
+    	File Selectedfile = chooser.showOpenDialog(new Stage());
+    	BufferedImage bimg = ImageIO.read(Selectedfile);//Taking file and storing it as image
+    	int width          = bimg.getWidth();			//getting dimensions of the image	
+    	int height         = bimg.getHeight();
+    	System.out.println("The width of the image is:"+width+"The height of the image is:"+height);//For developer reference
+    	if(width>1366&&height>768||width>1366||height>768)//Check if the image size is acceptable
+    		{
+    		Alert alert = new Alert(AlertType.ERROR);//Alert box appears when if statement is true    		
+    		alert.setTitle("Error");
+    		alert.setHeaderText("Uploaded Failed");
+    		alert.setContentText("Upload image less than 1.1 mbs");
+    		alert.showAndWait();
+    		}
+    	
+    
+    
 	}
 
 	@FXML
