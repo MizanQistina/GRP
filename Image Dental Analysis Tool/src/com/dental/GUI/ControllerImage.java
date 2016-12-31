@@ -51,10 +51,21 @@ public class ControllerImage extends Main implements Initializable {
     		alert.setContentText("Upload image less than 1.1 mbs");
     		alert.showAndWait();
     		}
-    	
-    
+    	else // If file is of appropriate dimensions run the following code
+    		{
+    		Image image = SwingFXUtils.toFXImage(bimg, null);//converting buffered image into an Image so javafx methods work
+    		ImageView imageView = new ImageView();
+    		imageView.setImage(image);
+    		imageView.setFitWidth(300);//only imageView is resized to fit not the original "image"
+    		imageView.setPreserveRatio(true);//making sure previewed image is not too big for screen
+    		imageView.setSmooth(true);
+    		imageView.setCache(true);
+    		imageView.setX(120);
+    		Preview.getChildren().add(imageView);//prints out image inside Hbox "Preview"
+    		} 
     
 	}
+
 
 	@FXML
 	private void onClickUpload() {	
