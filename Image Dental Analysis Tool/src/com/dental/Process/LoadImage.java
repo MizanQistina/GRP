@@ -16,7 +16,7 @@ public class LoadImage {
 		
 		PreProcessing dest = new PreProcessing(newImage);
 		
-		// Check project file to see the sharpened image
+		// Check project file to see the preprocessed image
 		Highgui.imwrite("preprocess.jpg",dest.preProcessing());
 		
 	}

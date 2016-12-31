@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class ControllerResult {
+	
 	@FXML
 	Button btnResult = new Button();
 	
