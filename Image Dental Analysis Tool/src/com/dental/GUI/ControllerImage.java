@@ -38,44 +38,61 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 	}	
 		
 	@FXML
-	void onClickBrowse() throws IOException
-		{		
+	void onClickBrowse() throws IOException {		
+		
 		FileChooser chooser = new FileChooser();
 	    chooser.setTitle("Choose image");
-	    chooser.getExtensionFilters().add(
-	    new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")//File format restrictions
-	    );             		
-	    File Selectedfile = chooser.showOpenDialog(new Stage());
-	    BufferedImage bimg = ImageIO.read(Selectedfile);//Taking file and storing it as image
-	    int width          = bimg.getWidth();			//getting dimensions of the image	
-	    int height         = bimg.getHeight();
-	    System.out.println("The width of the image is:"+width+"The height of the image is:"+height);//For developer reference
-	    	if(width>1366&&height>768||width>1366||height>768)//Check if the image size is acceptable
-	    		{
-	    		Alert alert = new Alert(AlertType.ERROR);//Alert box appears when if statement is true    		
-	    		alert.setTitle("Error");
-	    		alert.setHeaderText("Uploaded Failed");
-	    		alert.setContentText("Upload image less than 1.1 mbs");
-	    		alert.showAndWait();
-	    		}
-	    	else // If file is of appropriate dimensions run the following code
-	    		{
-	    		Image image = SwingFXUtils.toFXImage(bimg, null);//converting buffered image into an Image so javafx methods work
-	    		ImageView imageView = new ImageView();
-	    		imageView.setImage(image);
-	    		imageView.setFitWidth(300);//only imageView is resized to fit not the original "image"
-	    		imageView.setPreserveRatio(true);//making sure previewed image is not too big for screen
-	    		imageView.setSmooth(true);
-	    		imageView.setCache(true);
-	    		imageView.setX(120);
-	    		Preview.getChildren().add(imageView);//prints out image inside Hbox "Preview"
-	    		} 
 	    
-		}
+	    // File format restrictions - .png, .jpg, .jpeg
+	    chooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg") );             		
+	    File Selectedfile = chooser.showOpenDialog(new Stage());
+	    
+	    // Taking file and storing it as image
+	    BufferedImage bimg = ImageIO.read(Selectedfile);
+	    
+	    // Getting dimensions of the image
+	    int width          = bimg.getWidth();				
+	    int height         = bimg.getHeight();
+	    
+	    // For developer reference
+	    System.out.println("The width of the image is:" + width + "The height of the image is:" + height);
+	    
+	    // Check if the image size is acceptable
+	    if(width>1366&&height>768||width>1366||height>768) {
+	    	
+	    	// Alert box appears when if statement is true 
+	    	Alert alert = new Alert(AlertType.ERROR);   		
+	    	alert.setTitle("Error");
+	    	alert.setHeaderText("Uploaded Failed");
+	    	alert.setContentText("Upload image less than 1.1 mbs");
+	    	alert.showAndWait();
+	    }
+	    	
+	    // If file is of appropriate dimensions run the following code
+	   	else {
+	    		
+	   		// Converting buffered image into an Image so JavaFX methods work
+	   		Image image = SwingFXUtils.toFXImage(bimg, null);
+	   		ImageView imageView = new ImageView();
+	   		imageView.setImage(image);
+	   		
+	   		// Only ImageView is resized to fit not the original "image"
+	   		imageView.setFitWidth(300);
+	   		
+	   		// Making sure previewed image is not too big for screen
+	   		imageView.setPreserveRatio(true);
+	   		imageView.setSmooth(true);
+	   		imageView.setCache(true);
+	   		imageView.setX(120);
+	   		
+	   		// Prints out image inside HBox "Preview"
+	   		Preview.getChildren().add(imageView);
+	   } 
+	}
 
 	@FXML
 	private void onClickUpload() {	

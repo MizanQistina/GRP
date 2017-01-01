@@ -1,1 +1,36 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* This file contains css file for GUI - Automated Image Dental Analysis - Last Updated by Tahirah 1/1/2017 */
+
+AnchorPane{
+   -fx-background-color:
+        linear-gradient(#969A9A, #C2C3C3),
+        radial-gradient(center 50% -40%, radius 180%, #E8EAEA 45%, #E8EAEA 80%);
+}
+
+MenuBar{
+  -fx-background-color:
+        linear-gradient(#969A9A, #969A9A),
+        radial-gradient(center 50% -40%, radius 200%, #1ED7CB 45%, #5EDCD4 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #000000;
+}
+
+
+Button{
+  -fx-background-color:
+        linear-gradient(#1ED7CB, #92F6F0),
+        radial-gradient(center 50% -40%, radius 200%, #1ED7CB 45%, #5EDCD4 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #FFFFFF;
+
+  
+  }
+  
