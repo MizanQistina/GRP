@@ -11,10 +11,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="654.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerResult">
+<AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerResult">
    <children>
       <MenuBar prefHeight="44.0" prefWidth="1065.0">
         <menus>
@@ -35,27 +36,33 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="btnBack" layoutX="98.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="150.0" text="&lt;&lt; Back">
+      <Button fx:id="btnBack" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="150.0" text="&lt;&lt; Back">
          <font>
             <Font name="Consolas Bold" size="20.0" />
-         </font></Button>
-      <Button fx:id="btnResult" layoutX="105.0" layoutY="63.0" mnemonicParsing="false" onAction="#onClickResults" prefHeight="50.0" prefWidth="160.0" text="Show Results" textAlignment="CENTER">
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to go to previous stage" />
+         </tooltip></Button>
+      <Button fx:id="btnResult" layoutX="450.0" layoutY="510.0" mnemonicParsing="false" onAction="#onClickResults" prefHeight="50.0" prefWidth="160.0" text="Show Results" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
-         </font></Button>
-      <LineChart layoutX="25.0" layoutY="128.0" prefHeight="417.0" prefWidth="602.0">
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to show the results of the processed image" />
+         </tooltip></Button>
+      <LineChart layoutX="30.0" layoutY="65.0" prefHeight="417.0" prefWidth="602.0">
         <xAxis>
           <CategoryAxis label="Percentage of Colour Intensity" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis label="Number of Pixels" side="LEFT" />
+          <NumberAxis label="Pixels Count" side="LEFT" />
         </yAxis>
       </LineChart>
-      <Label layoutX="706.0" layoutY="378.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
-      <Label layoutX="705.0" layoutY="457.0" prefHeight="21.0" prefWidth="101.0" text="Total Area:" />
-      <TextArea layoutX="807.0" layoutY="377.0" prefHeight="47.0" prefWidth="150.0" />
-      <TextArea layoutX="807.0" layoutY="444.0" prefHeight="48.0" prefWidth="150.0" />
-      <TableView layoutX="648.0" layoutY="141.0" prefHeight="216.0" prefWidth="363.0">
+      <Label layoutX="706.0" layoutY="337.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
+      <Label layoutX="705.0" layoutY="416.0" prefHeight="21.0" prefWidth="101.0" text="Total Area:" />
+      <TextArea layoutX="807.0" layoutY="336.0" prefHeight="47.0" prefWidth="150.0" />
+      <TextArea layoutX="807.0" layoutY="403.0" prefHeight="48.0" prefWidth="150.0" />
+      <TableView layoutX="648.0" layoutY="100.0" prefHeight="216.0" prefWidth="363.0">
         <columns>
           <TableColumn prefWidth="229.0" text="Percentage of Colour Intensity" />
           <TableColumn prefWidth="133.0" text="Pixels Count" />

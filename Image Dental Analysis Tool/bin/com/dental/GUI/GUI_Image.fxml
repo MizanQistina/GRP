@@ -4,23 +4,29 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="649.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
+<AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
    <children>
-      <Button fx:id="btnUpload" layoutX="353.0" layoutY="402.0" mnemonicParsing="false" onAction="#onClickUpload" prefHeight="50.0" prefWidth="150.0" stylesheets="@application.css" text="Upload" textAlignment="CENTER">
+      <Button fx:id="btnUpload" layoutX="350.0" layoutY="510.0" mnemonicParsing="false" onAction="#onClickUpload" prefHeight="50.0" prefWidth="150.0" stylesheets="@application.css" text="Upload" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
-         </font></Button>
-      <Button fx:id="btnBrowse" layoutX="567.0" layoutY="402.0" mnemonicParsing="false" onAction="#onClickBrowse" prefHeight="50.0" prefWidth="150.0" text="Browse" textAlignment="CENTER">
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to upload selected image" />
+         </tooltip></Button>
+      <Button fx:id="btnBrowse" layoutX="550.0" layoutY="510.0" mnemonicParsing="false" onAction="#onClickBrowse" prefHeight="50.0" prefWidth="150.0" text="Browse" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
-         </font></Button>
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to browse image" />
+         </tooltip></Button>
       <MenuBar prefHeight="44.0" prefWidth="1065.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -43,27 +49,18 @@
             <ColorAdjust brightness="0.13" contrast="-0.05" hue="-0.1" saturation="-0.12" />
          </effect>
       </MenuBar>
-      <Text layoutX="101.0" layoutY="504.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Insert instructions here" wrappingWidth="533.6708984375">
-         <font>
-            <Font name="Segoe UI Light" size="20.0" />
-         </font></Text>
-      <Text layoutX="101.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Insert instructions here" wrappingWidth="533.6708984375">
-         <font>
-            <Font name="Segoe UI Light" size="20.0" />
-         </font></Text>
-      <Text layoutX="101.0" layoutY="584.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Insert instructions here" wrappingWidth="533.6708984375">
-         <font>
-            <Font name="Segoe UI Light" size="20.0" />
-         </font></Text>
-      <Button fx:id="btnNext" layoutX="790.0" layoutY="526.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="150.0" text="Next &gt;&gt;" textAlignment="CENTER">
+      <Button fx:id="btnNext" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="150.0" text="Next &gt;&gt;" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
-         </font></Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#868585" height="300.0" layoutX="283.0" layoutY="80.0" stroke="#656262" strokeType="INSIDE" width="500.0" />
-      <Text layoutX="413.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PREVIEW IMAGE HERE" textAlignment="CENTER" wrappingWidth="240.6708984375">
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to go to the next stage" />
+         </tooltip></Button>
+      <Text layoutX="430.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PREVIEW IMAGE HERE" textAlignment="CENTER" wrappingWidth="240.6708984375">
          <font>
             <Font name="Segoe UI Light" size="23.0" />
-         </font></Text>
-      <HBox fx:id="Preview" alignment="CENTER" layoutX="283.0" layoutY="82.0" prefHeight="300.0" prefWidth="500.0" />
+         </font>
+      </Text>
+      <HBox fx:id="Preview" alignment="CENTER" layoutX="170.0" layoutY="65.0" prefHeight="430.0" prefWidth="730.0" />
    </children>
 </AnchorPane>
