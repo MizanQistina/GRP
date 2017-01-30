@@ -95,19 +95,24 @@ public class ControllerImage extends Main implements Initializable {
 	}
 
 	@FXML
-	private void onClickUpload() {	
-		// will be updated
-	}	
-
-	@FXML
 	private void onClickNext() throws IOException {	
+	//	if (onClickUpload().isEmpty()){
+	//	Alert alert = new Alert(AlertType.ERROR);   		
+    //	alert.setTitle("Unable to proceed");
+    //	alert.setHeaderText("No Image detected");
+    //	alert.setContentText("Please upload an image to proceed");
+    //	alert.showAndWait();
+	//	btnNext.setDisable(true);
 		
+	//	}
+	//	else {
 		Stage stage; 
 	    Parent root;
-	    stage=(Stage) btnNext.getScene().getWindow();
+	    stage=(Stage) btnNext.getScene().getWindow();	    
 	    root = FXMLLoader.load(getClass().getResource("GUI_Enhance.fxml"));
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.show();
-	}
+	    }
+	//}
 }	
