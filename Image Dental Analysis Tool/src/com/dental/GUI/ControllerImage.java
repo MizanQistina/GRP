@@ -95,6 +95,11 @@ public class ControllerImage extends Main implements Initializable {
 	}
 
 	@FXML
+	private void onClickUpload() {	
+		// will be updated
+	}
+	
+	@FXML
 	private void onClickNext() throws IOException {	
 	//	if (onClickUpload().isEmpty()){
 	//	Alert alert = new Alert(AlertType.ERROR);   		
