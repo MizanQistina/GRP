@@ -43,14 +43,14 @@
          <tooltip>
             <Tooltip text="Click this button to go to previous stage" />
          </tooltip></Button>
-      <Button fx:id="btnResult" layoutX="450.0" layoutY="510.0" mnemonicParsing="false" onAction="#onClickResults" prefHeight="50.0" prefWidth="160.0" text="Show Results" textAlignment="CENTER">
+      <Button fx:id="btnResult" layoutX="450.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickResults" prefHeight="50.0" prefWidth="160.0" text="Show Results" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
          <tooltip>
             <Tooltip text="Click this button to show the results of the processed image" />
          </tooltip></Button>
-      <LineChart layoutX="30.0" layoutY="65.0" prefHeight="417.0" prefWidth="602.0">
+      <LineChart layoutX="27.0" layoutY="65.0" prefHeight="434.0" prefWidth="615.0">
         <xAxis>
           <CategoryAxis label="Percentage of Colour Intensity" side="BOTTOM" />
         </xAxis>
@@ -58,15 +58,23 @@
           <NumberAxis label="Pixels Count" side="LEFT" />
         </yAxis>
       </LineChart>
-      <Label layoutX="706.0" layoutY="337.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
-      <Label layoutX="705.0" layoutY="416.0" prefHeight="21.0" prefWidth="101.0" text="Total Area:" />
-      <TextArea layoutX="807.0" layoutY="336.0" prefHeight="47.0" prefWidth="150.0" />
-      <TextArea layoutX="807.0" layoutY="403.0" prefHeight="48.0" prefWidth="150.0" />
-      <TableView layoutX="648.0" layoutY="100.0" prefHeight="216.0" prefWidth="363.0">
+      <Label layoutX="706.0" layoutY="362.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
+      <Label layoutX="705.0" layoutY="441.0" prefHeight="21.0" prefWidth="101.0" text="Total Area:" />
+      <TextArea layoutX="807.0" layoutY="361.0" prefHeight="47.0" prefWidth="150.0" />
+      <TextArea layoutX="807.0" layoutY="428.0" prefHeight="48.0" prefWidth="150.0" />
+      <TableView layoutX="656.0" layoutY="80.0" prefHeight="249.0" prefWidth="373.0">
         <columns>
           <TableColumn prefWidth="229.0" text="Percentage of Colour Intensity" />
           <TableColumn prefWidth="133.0" text="Pixels Count" />
         </columns>
       </TableView>
+      <Button fx:id="btnBack1" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="150.0" text="Exit">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to go to previous stage" />
+         </tooltip>
+      </Button>
    </children>
 </AnchorPane>

@@ -13,14 +13,14 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
    <children>
-      <Button fx:id="btnUpload" layoutX="350.0" layoutY="510.0" mnemonicParsing="false" onAction="#onClickUpload" prefHeight="50.0" prefWidth="150.0" stylesheets="@application.css" text="Upload" textAlignment="CENTER">
+      <Button fx:id="btnUpload" layoutX="450.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickUpload" prefHeight="50.0" prefWidth="150.0" stylesheets="@application.css" text="Upload" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
          <tooltip>
             <Tooltip text="Click this button to upload selected image" />
          </tooltip></Button>
-      <Button fx:id="btnBrowse" layoutX="550.0" layoutY="510.0" mnemonicParsing="false" onAction="#onClickBrowse" prefHeight="50.0" prefWidth="150.0" text="Browse" textAlignment="CENTER">
+      <Button fx:id="btnBrowse" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBrowse" prefHeight="50.0" prefWidth="150.0" text="Browse" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>

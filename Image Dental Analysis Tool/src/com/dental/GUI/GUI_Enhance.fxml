@@ -45,7 +45,7 @@
          <tooltip>
             <Tooltip text="Click this button to go to the next stage" />
          </tooltip></Button>
-      <Button fx:id="btnEnhance" layoutX="450.0" layoutY="510.0" mnemonicParsing="false" onAction="#onClickEnchance" prefHeight="50.0" prefWidth="150.0" text="Enhance">
+      <Button fx:id="btnEnhance" layoutX="450.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickEnchance" prefHeight="50.0" prefWidth="150.0" text="Enhance">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>

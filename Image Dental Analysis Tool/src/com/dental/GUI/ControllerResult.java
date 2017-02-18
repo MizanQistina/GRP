@@ -16,7 +16,7 @@ public class ControllerResult {
 	
 	@FXML
 	Button btnResult = new Button();
-	
+	//
 	@FXML
 	Button btnBack = new Button();
 	
