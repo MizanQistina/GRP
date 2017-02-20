@@ -58,8 +58,8 @@
           <NumberAxis label="Pixels Count" side="LEFT" />
         </yAxis>
       </LineChart>
-      <Label layoutX="706.0" layoutY="362.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
-      <Label layoutX="705.0" layoutY="441.0" prefHeight="21.0" prefWidth="101.0" text="Total Area:" />
+      <Label layoutX="698.0" layoutY="362.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
+      <Label layoutX="697.0" layoutY="441.0" prefHeight="21.0" prefWidth="101.0" text="Total Area (%):" />
       <TextArea layoutX="807.0" layoutY="361.0" prefHeight="47.0" prefWidth="150.0" />
       <TextArea layoutX="807.0" layoutY="428.0" prefHeight="48.0" prefWidth="150.0" />
       <TableView layoutX="656.0" layoutY="80.0" prefHeight="249.0" prefWidth="373.0">
@@ -68,12 +68,12 @@
           <TableColumn prefWidth="133.0" text="Pixels Count" />
         </columns>
       </TableView>
-      <Button fx:id="btnBack1" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="150.0" text="Exit">
+      <Button fx:id="btnExit" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickExit" prefHeight="50.0" prefWidth="150.0" text="Exit">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
          <tooltip>
-            <Tooltip text="Click this button to go to previous stage" />
+            <Tooltip text="Click this button to exit the program" />
          </tooltip>
       </Button>
    </children>

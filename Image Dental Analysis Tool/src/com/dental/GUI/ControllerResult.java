@@ -44,4 +44,9 @@ public class ControllerResult {
 	    stage.setScene(scene);
 	    stage.show();
 	}
+	
+	@FXML
+	private void onClickExit(){
+		System.exit(0);
+	}
 }
