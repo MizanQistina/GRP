@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.imageio.ImageIO;
+
+import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +18,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -35,6 +40,27 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@FXML
 	Button btnNext = new Button();
+	
+	@FXML
+	MenuBar menuBar = new MenuBar();
+	
+	@FXML
+	Menu file = new Menu("File");
+	
+	@FXML
+	Menu help = new Menu("Help");
+	
+	@FXML
+	MenuItem itmOpen = new MenuItem();
+	
+	@FXML
+	MenuItem itmClose = new MenuItem();
+	
+	@FXML
+	MenuItem itmExit = new MenuItem();
+	
+	@FXML
+	MenuItem itmAbout = new MenuItem();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -120,4 +146,30 @@ public class ControllerImage extends Main implements Initializable {
 	    stage.show();
 	    }
 	//}
-}	
+
+	//To display all MenuItems under File when it is clicked
+@FXML
+void onClickFile() {
+	MenuItem itmOpen = new MenuItem("Open");
+	MenuItem itmClose = new MenuItem("Close");
+	MenuItem itmExit = new MenuItem("Exit");
+	file.getItems().addAll(itmOpen, itmClose, itmExit);
+	menuBar.getMenus().addAll(file);
+}
+
+	//To display MenuItems in Help option ('About' in this case)
+@FXML 
+void onClickHelp() {
+	MenuItem itmAbout = new MenuItem("About");
+	help.getItems().addAll(itmAbout);
+	menuBar.getMenus().addAll(help);
+}
+
+	//When EXIT in File is clicked, the entire application is closed
+@FXML 
+void onClickExit() {
+	Platform.exit();
+}
+}
+
+

@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class ControllerResult {
@@ -19,6 +23,24 @@ public class ControllerResult {
 	//
 	@FXML
 	Button btnBack = new Button();
+	
+	@FXML
+	MenuBar menuBar = new MenuBar();
+	
+	@FXML
+	Menu file = new Menu("File");
+	
+	@FXML
+	Menu help = new Menu("Help");
+	
+	@FXML
+	MenuItem itmOpen = new MenuItem();
+	
+	@FXML
+	MenuItem itmClose = new MenuItem();
+	
+	@FXML
+	MenuItem itmExit = new MenuItem();
 	
 	public class ControllerImage implements Initializable {
 		
@@ -48,5 +70,29 @@ public class ControllerResult {
 	@FXML
 	private void onClickExit(){
 		System.exit(0);
+	}
+	
+	//To display all MenuItems under File when it is clicked
+	@FXML
+	void onClickFile() {
+		MenuItem itmOpen = new MenuItem("Open");
+		MenuItem itmClose = new MenuItem("Close");
+		MenuItem itmExit = new MenuItem("Exit");
+		file.getItems().addAll(itmOpen, itmClose, itmExit);
+		menuBar.getMenus().addAll(file);
+	}
+	
+	//To display MenuItems in Help option ('About' in this case)
+	@FXML 
+	void onClickHelp() {
+		MenuItem itmAbout = new MenuItem("About");
+		help.getItems().addAll(itmAbout);
+		menuBar.getMenus().addAll(help);
+	}
+	
+	//When EXIT in File is clicked, the entire application is closed
+	@FXML
+	void onClickMenuExit(){
+		Platform.exit();
 	}
 }
