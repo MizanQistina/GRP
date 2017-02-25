@@ -87,16 +87,14 @@ public class ControllerEnhance {
 	
 	//To display all MenuItems under File when it is clicked
 	@FXML
-	void onClickFile() {
-		MenuItem itmOpen = new MenuItem("Open");
-		MenuItem itmClose = new MenuItem("Close");
+	private void onClickFile() {
 		MenuItem itmExit = new MenuItem("Exit");
-		file.getItems().addAll(itmOpen, itmClose, itmExit);
+		file.getItems().addAll(itmExit);
 		menuBar.getMenus().addAll(file);
 }
 	//To display all MenuItems under Help when it is clicked
 	@FXML 
-	void onClickHelp() {
+	private void onClickHelp() {
 		MenuItem itmAbout = new MenuItem("About");
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
@@ -104,7 +102,7 @@ public class ControllerEnhance {
 	
 	//When EXIT in File is clicked, the entire application is closed
 	@FXML
-	void onClickExit(){
+	private void onClickExit(){
 		Platform.exit();
 	}
 }

@@ -148,28 +148,28 @@ public class ControllerImage extends Main implements Initializable {
 	//}
 
 	//To display all MenuItems under File when it is clicked
-@FXML
-void onClickFile() {
-	MenuItem itmOpen = new MenuItem("Open");
-	MenuItem itmClose = new MenuItem("Close");
-	MenuItem itmExit = new MenuItem("Exit");
-	file.getItems().addAll(itmOpen, itmClose, itmExit);
-	menuBar.getMenus().addAll(file);
-}
-
+	@FXML
+	private void onClickFile() {
+		MenuItem itmOpen = new MenuItem("Open");
+		MenuItem itmClose = new MenuItem("Close");
+		MenuItem itmExit = new MenuItem("Exit");
+		file.getItems().addAll(itmOpen, itmClose, itmExit);
+		menuBar.getMenus().addAll(file);
+	}
+	
 	//To display MenuItems in Help option ('About' in this case)
-@FXML 
-void onClickHelp() {
-	MenuItem itmAbout = new MenuItem("About");
-	help.getItems().addAll(itmAbout);
-	menuBar.getMenus().addAll(help);
-}
-
+	@FXML 
+	private void onClickHelp() {
+		MenuItem itmAbout = new MenuItem("About");
+		help.getItems().addAll(itmAbout);
+		menuBar.getMenus().addAll(help);
+	}
+	
 	//When EXIT in File is clicked, the entire application is closed
-@FXML 
-void onClickExit() {
-	Platform.exit();
-}
+	@FXML 
+	private void onClickExit() {
+		Platform.exit();
+	}
 }
 
 
