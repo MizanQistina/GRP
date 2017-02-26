@@ -61,7 +61,7 @@ public class ControllerResult {
 		Stage stage; 
 	    Parent root;
 	    stage=(Stage)btnBack.getScene().getWindow();
-	    root = FXMLLoader.load(getClass().getResource("GUI_Enhance.fxml"));
+	    root = FXMLLoader.load(getClass().getResource("GUI_Image.fxml"));
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.show();

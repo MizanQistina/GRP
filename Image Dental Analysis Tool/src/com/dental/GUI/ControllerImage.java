@@ -30,11 +30,8 @@ import javafx.scene.layout.HBox;
 public class ControllerImage extends Main implements Initializable {
 
 	@FXML
-	Button btnBrowse = new Button();
-	
-	@FXML
-	Button btnUpload = new Button();
-	
+	Button btnEnhance = new Button();
+		
 	@FXML
 	HBox Preview = new HBox();
 	
@@ -68,7 +65,7 @@ public class ControllerImage extends Main implements Initializable {
 	}	
 		
 	@FXML
-	void onClickBrowse() throws IOException {		
+	private void onClickOpen() throws IOException {		
 		
 		FileChooser chooser = new FileChooser();
 	    chooser.setTitle("Choose image");
@@ -121,7 +118,7 @@ public class ControllerImage extends Main implements Initializable {
 	}
 
 	@FXML
-	private void onClickUpload() {	
+	private void onClickEnchance() {		
 		// will be updated
 	}
 	
@@ -140,7 +137,7 @@ public class ControllerImage extends Main implements Initializable {
 		Stage stage; 
 	    Parent root;
 	    stage=(Stage) btnNext.getScene().getWindow();	    
-	    root = FXMLLoader.load(getClass().getResource("GUI_Enhance.fxml"));
+	    root = FXMLLoader.load(getClass().getResource("GUI_Result.fxml"));
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.show();
