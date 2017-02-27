@@ -63,6 +63,7 @@ public class ControllerImage extends Main implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}	
+	
 		
 	@FXML
 	private void onClickOpen() throws IOException {		
@@ -160,6 +161,17 @@ public class ControllerImage extends Main implements Initializable {
 		MenuItem itmAbout = new MenuItem("About");
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
+		//Display copyright information when 'Help' is clicked
+		Alert alert = new Alert(AlertType.WARNING);   		
+    	alert.setTitle("Help");
+    	alert.setHeaderText("Automated Image Dental Analysis");
+    	alert.setContentText("Version 1.0 - Last Updated March 2017\n\n"
+    			+ "Copyright 2017 Group 2 UNMC.\n "
+    			+ "All rights reserved.\n\n"
+    			+ "This software is made possible by OpenCV and Scene Builder.\n");
+    	alert.showAndWait();
+		
+
 	}
 	
 	//When EXIT in File is clicked, the entire application is closed
