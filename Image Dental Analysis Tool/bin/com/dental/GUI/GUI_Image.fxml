@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,5 +53,17 @@
          </font>
       </Text>
       <HBox fx:id="Preview" alignment="CENTER" layoutX="170.0" layoutY="65.0" prefHeight="430.0" prefWidth="730.0" />
+      <Text layoutX="427.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+         <font>
+            <Font name="Segoe UI Light" size="20.0" />
+         </font>
+      </Text>
+      <Slider fx:id="sharpSlider" layoutX="407.0" layoutY="565.0" prefHeight="31.0" prefWidth="280.0" />
+      <Slider fx:id="brightSlider" layoutX="407.0" layoutY="605.0" prefHeight="31.0" prefWidth="280.0" />
+      <Text layoutX="427.0" layoutY="607.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+         <font>
+            <Font name="Segoe UI Light" size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

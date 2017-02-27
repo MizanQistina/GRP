@@ -16,6 +16,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Slider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -29,6 +32,12 @@ import javafx.scene.layout.HBox;
 
 public class ControllerImage extends Main implements Initializable {
 
+	@FXML
+	private Slider sharpSlider; 
+	
+	@FXML
+	private Slider brightSlider;
+	
 	@FXML
 	Button btnEnhance = new Button();
 		
@@ -61,7 +70,23 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//Listen for Sharpness Slider Value Changes
+		sharpSlider.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable,
+					Number oldValue, Number newValue) {
+				System.out.println("Sharpness Slider Changed (newValue: " + newValue.intValue() + ")\n");
+			}
+		});
 		
+		//Listen for Brightness Slider Value Changes
+		brightSlider.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable,
+					Number oldValue, Number newValue) {
+				System.out.println("Brightness Slider Changed (newValue: " + newValue.intValue() + ")\n");
+			}
+		});
 	}	
 	
 		
