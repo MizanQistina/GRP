@@ -2,8 +2,13 @@ package com.dental.GUI;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,9 +21,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.control.Slider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -32,12 +34,6 @@ import javafx.scene.layout.HBox;
 
 public class ControllerImage extends Main implements Initializable {
 
-	@FXML
-	private Slider sharpSlider; 
-	
-	@FXML
-	private Slider brightSlider;
-	
 	@FXML
 	Button btnEnhance = new Button();
 		
@@ -70,26 +66,30 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		// Listen for Sharpness slider value changes
-		sharpSlider.valueProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable,
-					Number oldValue, Number newValue) {
-				System.out.println("Sharpness Slider Changed (newValue: " + newValue.intValue() + ")\n");
-			}
-		});
-		
-		// Listen for Brightness slider value changes
-		brightSlider.valueProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable,
-					Number oldValue, Number newValue) {
-				System.out.println("Brightness Slider Changed (newValue: " + newValue.intValue() + ")\n");
-			}
-		});
+		File file = new File("resource/saved.png");
+		FileReader fr = null;
+		try	
+		{
+			fr = new FileReader(file);
+			Image image = new Image(file.toURI().toString());
+		    ImageView iv = new ImageView(image);
+		    
+		    if(!iv.isCache())
+		    {
+				btnNext.setStyle("-fx-background-color: #a8a8a8");
+				btnNext.setDisable(true);
+
+				System.out.println("File doesn't display");
+		    }
+		    
+		}catch(FileNotFoundException e)
+		{
+			btnNext.setStyle("-fx-background-color: #a8a8a8");
+			btnNext.setDisable(true);
+
+			System.out.println("File doesn't exist");
+		}
 	}	
-	
 		
 	@FXML
 	private void onClickOpen() throws IOException {		
@@ -103,6 +103,19 @@ public class ControllerImage extends Main implements Initializable {
 	    
 	    // Taking file and storing it as image
 	    BufferedImage bimg = ImageIO.read(Selectedfile);
+	    
+		try {
+		    // retrieve image
+		    BufferedImage bi = bimg;
+		    File outputfile = new File("resource/saved.png");
+		    ImageIO.write(bi, "png", outputfile);
+		    
+			btnNext.setStyle("-fx-background-color: #1ed7cb");
+			btnNext.setDisable(false);
+		} catch (IOException e) {
+			btnNext.setStyle("-fx-background-color: #a8a8a8");
+			btnNext.setDisable(true);
+		}
 	    
 	    // Getting dimensions of the image
 	    int width          = bimg.getWidth();				
@@ -143,7 +156,13 @@ public class ControllerImage extends Main implements Initializable {
 	   		Preview.getChildren().add(imageView);
 	   } 
 	}
-
+	
+	@FXML
+	private void onClickClose() throws IOException {
+		 Path fileToDeletePath = Paths.get("resource/saved.png");
+		    Files.delete(fileToDeletePath);
+	}
+	
 	@FXML
 	private void onClickEnchance() {		
 		// will be updated
@@ -151,16 +170,7 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@FXML
 	private void onClickNext() throws IOException {	
-	//	if (onClickUpload().isEmpty()){
-	//	Alert alert = new Alert(AlertType.ERROR);   		
-    //	alert.setTitle("Unable to proceed");
-    //	alert.setHeaderText("No Image detected");
-    //	alert.setContentText("Please upload an image to proceed");
-    //	alert.showAndWait();
-	//	btnNext.setDisable(true);
-		
-	//	}
-	//	else {
+	
 		Stage stage; 
 	    Parent root;
 	    stage=(Stage) btnNext.getScene().getWindow();	    
@@ -168,10 +178,10 @@ public class ControllerImage extends Main implements Initializable {
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.show();
-	    }
-	//}
+    }
 
-	// To display all MenuItems under File when it is clicked
+
+	//To display all MenuItems under File when it is clicked
 	@FXML
 	private void onClickFile() {
 		MenuItem itmOpen = new MenuItem("Open");
@@ -181,27 +191,15 @@ public class ControllerImage extends Main implements Initializable {
 		menuBar.getMenus().addAll(file);
 	}
 	
-	// To display MenuItems in Help option ('About' in this case)
+	//To display MenuItems in Help option ('About' in this case)
 	@FXML 
 	private void onClickHelp() {
 		MenuItem itmAbout = new MenuItem("About");
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
-		
-		// Display copyright information when 'Help' is clicked
-		Alert alert = new Alert(AlertType.INFORMATION);   		
-    	alert.setTitle("Help");
-    	alert.setHeaderText("Automated Image Dental Analysis");
-    	alert.setContentText("Version 1.0 - Last Updated March 2017\n\n"
-    			+ "Copyright 2017 Group 2 UNMC.\n "
-    			+ "All rights reserved.\n\n"
-    			+ "This software is made possible by OpenCV and Scene Builder.\n");
-    	alert.showAndWait();
-		
-
 	}
 	
-	// When EXIT in File is clicked, the entire application is closed
+	//When EXIT in File is clicked, the entire application is closed
 	@FXML 
 	private void onClickExit() {
 		Platform.exit();

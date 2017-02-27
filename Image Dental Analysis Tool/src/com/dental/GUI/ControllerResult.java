@@ -10,12 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class ControllerResult {
@@ -74,7 +72,7 @@ public class ControllerResult {
 		System.exit(0);
 	}
 	
-	// To display all MenuItems under File when it is clicked
+	//To display all MenuItems under File when it is clicked
 	@FXML
 	private void onClickFile() {
 		MenuItem itmExit = new MenuItem("Exit");
@@ -82,25 +80,15 @@ public class ControllerResult {
 		menuBar.getMenus().addAll(file);
 	}
 	
-	// To display MenuItems in Help option ('About' in this case)
+	//To display MenuItems in Help option ('About' in this case)
 	@FXML 
 	private void onClickHelp() {
 		MenuItem itmAbout = new MenuItem("About");
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
-		
-		// Display copyright information when 'Help' is clicked
-		Alert alert = new Alert(AlertType.INFORMATION);   		
-    	alert.setTitle("Help");
-    	alert.setHeaderText("Automated Image Dental Analysis");
-    	alert.setContentText("Version 1.0 - Last Updated March 2017\n\n"
-    			+ "Copyright 2017 Group 2 UNMC.\n "
-    			+ "All rights reserved.\n\n"
-    			+ "This software is made possible by OpenCV and Scene Builder.\n");
-    	alert.showAndWait();
 	}
 	
-	// When EXIT in File is clicked, the entire application is closed
+	//When EXIT in File is clicked, the entire application is closed
 	@FXML
 	private void onClickMenuExit(){
 		Platform.exit();
