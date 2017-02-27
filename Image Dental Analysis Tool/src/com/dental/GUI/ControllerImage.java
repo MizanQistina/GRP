@@ -70,7 +70,8 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//Listen for Sharpness Slider Value Changes
+		
+		// Listen for Sharpness slider value changes
 		sharpSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable,
@@ -79,7 +80,7 @@ public class ControllerImage extends Main implements Initializable {
 			}
 		});
 		
-		//Listen for Brightness Slider Value Changes
+		// Listen for Brightness slider value changes
 		brightSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable,
@@ -170,7 +171,7 @@ public class ControllerImage extends Main implements Initializable {
 	    }
 	//}
 
-	//To display all MenuItems under File when it is clicked
+	// To display all MenuItems under File when it is clicked
 	@FXML
 	private void onClickFile() {
 		MenuItem itmOpen = new MenuItem("Open");
@@ -180,14 +181,15 @@ public class ControllerImage extends Main implements Initializable {
 		menuBar.getMenus().addAll(file);
 	}
 	
-	//To display MenuItems in Help option ('About' in this case)
+	// To display MenuItems in Help option ('About' in this case)
 	@FXML 
 	private void onClickHelp() {
 		MenuItem itmAbout = new MenuItem("About");
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
-		//Display copyright information when 'Help' is clicked
-		Alert alert = new Alert(AlertType.WARNING);   		
+		
+		// Display copyright information when 'Help' is clicked
+		Alert alert = new Alert(AlertType.INFORMATION);   		
     	alert.setTitle("Help");
     	alert.setHeaderText("Automated Image Dental Analysis");
     	alert.setContentText("Version 1.0 - Last Updated March 2017\n\n"
@@ -199,7 +201,7 @@ public class ControllerImage extends Main implements Initializable {
 
 	}
 	
-	//When EXIT in File is clicked, the entire application is closed
+	// When EXIT in File is clicked, the entire application is closed
 	@FXML 
 	private void onClickExit() {
 		Platform.exit();
