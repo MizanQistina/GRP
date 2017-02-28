@@ -21,6 +21,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Slider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -34,6 +37,12 @@ import javafx.scene.layout.HBox;
 
 public class ControllerImage extends Main implements Initializable {
 
+	@FXML
+	private Slider sharpSlider;
+	
+	@FXML
+	private Slider brightSlider;
+	
 	@FXML
 	Button btnEnhance = new Button();
 		
@@ -66,6 +75,23 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// Listen for Sharpness slider value changes
+		sharpSlider.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable,
+					Number oldValue, Number newValue) {
+				System.out.println("Sharpness Slider Changed (newValue: " + newValue.intValue() + ")\n");
+			}
+		});
+		
+		// Listen for Brightness slider value changes
+		brightSlider.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable,
+					Number oldValue, Number newValue) {
+				System.out.println("Brightness Slider Changed (newValue: " + newValue.intValue() + ")\n");
+			}
+		});
 		File file = new File("resource/saved.png");
 		FileReader fr = null;
 		try	
@@ -197,6 +223,15 @@ public class ControllerImage extends Main implements Initializable {
 		MenuItem itmAbout = new MenuItem("About");
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
+		// Display copyright information when 'Help' is clicked
+		Alert alert = new Alert(AlertType.INFORMATION);   		
+    	alert.setTitle("Help");
+    	alert.setHeaderText("Automated Image Dental Analysis");
+    	alert.setContentText("Version 1.0 - Last Updated March 2017\n\n"
+    			+ "Copyright 2017 Group 2 UNMC.\n "
+    			+ "All rights reserved.\n\n"
+    			+ "This software is made possible by OpenCV and Scene Builder.\n");
+    	alert.showAndWait();
 	}
 	
 	//When EXIT in File is clicked, the entire application is closed
