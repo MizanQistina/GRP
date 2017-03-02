@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -89,7 +90,9 @@ public class ControllerResult {
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
 		// Display copyright information when 'Help' is clicked
-		Alert alert = new Alert(AlertType.INFORMATION);   		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		DialogPane dialogPane = alert.getDialogPane();
+		dialogPane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     	alert.setTitle("Help");
     	alert.setHeaderText("Automated Image Dental Analysis");
     	alert.setContentText("Version 1.0 - Last Updated March 2017\n\n"
