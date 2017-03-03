@@ -74,6 +74,9 @@ public class ControllerImage extends Main implements Initializable {
 	@FXML
 	MenuItem itmAbout = new MenuItem();
 	
+	@FXML
+	ImageView imageView = new ImageView();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// Listen for Sharpness slider value changes
@@ -167,7 +170,6 @@ public class ControllerImage extends Main implements Initializable {
 	    		
 	   		// Converting buffered image into an Image so JavaFX methods work
 	   		Image image = SwingFXUtils.toFXImage(bimg, null);
-	   		ImageView imageView = new ImageView();
 	   		imageView.setImage(image);
 	   		
 	   		// Only ImageView is resized to fit not the original "image"
@@ -188,6 +190,7 @@ public class ControllerImage extends Main implements Initializable {
 	private void onClickClose() throws IOException {
 		 Path fileToDeletePath = Paths.get("resource/saved.png");
 		    Files.delete(fileToDeletePath);
+		    imageView.setImage(null);
 	}
 	
 	@FXML
