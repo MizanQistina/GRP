@@ -1,5 +1,7 @@
 package com.dental.Process;
 
+import java.io.File;
+
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
@@ -8,9 +10,10 @@ public class LoadImage {
 
 	private static Mat newImage;
 	
-	public static void main( String[] args ){
+	public LoadImage(File SelectedFile){
 		
-		String address = "";// Enter address to the uploaded image here
+		String address = SelectedFile.toString();
+		System.out.println(address);
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		newImage = Highgui.imread(address,Highgui.CV_LOAD_IMAGE_COLOR);
 		

@@ -14,6 +14,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.imageio.ImageIO;
 
+import com.dental.Process.LoadImage;
+
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
@@ -77,6 +79,9 @@ public class ControllerImage extends Main implements Initializable {
 	@FXML
 	ImageView imageView = new ImageView();
 	
+	private File Selectedfile;
+	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// Listen for Sharpness slider value changes
@@ -129,7 +134,7 @@ public class ControllerImage extends Main implements Initializable {
 	    
 	    // File format restrictions - .png, .jpg, .jpeg
 	    chooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg") );             		
-	    File Selectedfile = chooser.showOpenDialog(new Stage());
+	    Selectedfile = chooser.showOpenDialog(new Stage());
 	    
 	    // Taking file and storing it as image
 	    BufferedImage bimg = ImageIO.read(Selectedfile);
@@ -195,7 +200,7 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@FXML
 	private void onClickEnchance() {		
-		// will be updated
+		LoadImage im = new LoadImage(getSelectedfile());
 	}
 	
 	@FXML
@@ -244,6 +249,10 @@ public class ControllerImage extends Main implements Initializable {
 	@FXML 
 	private void onClickExit() {
 		Platform.exit();
+	}
+	
+	public File getSelectedfile() {
+		return Selectedfile;
 	}
 }
 
