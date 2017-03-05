@@ -253,6 +253,7 @@ public class ControllerImage extends Main implements Initializable {
 	
 	public File getSelectedfile() {
 		return Selectedfile;
+		
 	}
 }
 
