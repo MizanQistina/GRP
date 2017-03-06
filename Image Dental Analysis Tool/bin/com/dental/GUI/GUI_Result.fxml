@@ -50,8 +50,8 @@
       </LineChart>
       <Label layoutX="698.0" layoutY="362.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
       <Label layoutX="697.0" layoutY="441.0" prefHeight="21.0" prefWidth="101.0" text="Total Area (%):" />
-      <TextArea layoutX="807.0" layoutY="361.0" prefHeight="47.0" prefWidth="150.0" />
-      <TextArea layoutX="807.0" layoutY="428.0" prefHeight="48.0" prefWidth="150.0" />
+      <TextArea fx:id="totalPixel" layoutX="807.0" layoutY="361.0" prefHeight="47.0" prefWidth="150.0" />
+      <TextArea fx:id="totalArea" layoutX="807.0" layoutY="428.0" prefHeight="48.0" prefWidth="150.0" />
       <TableView layoutX="656.0" layoutY="80.0" prefHeight="249.0" prefWidth="373.0">
         <columns>
           <TableColumn prefWidth="229.0" text="Percentage of Colour Intensity" />

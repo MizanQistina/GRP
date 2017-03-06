@@ -11,9 +11,9 @@ public class Area {
 	}
 	
 	// Calculates the total area of pink and magenta pixels
-	protected int calculateTotalArea(){
+	protected float calculateTotalArea(){
 			
-		int totalArea = 0;
+		float totalArea = 0;
 		totalArea = (totalPixel*100/size); // Calculates the total area in percentage
 		
 		return totalArea;

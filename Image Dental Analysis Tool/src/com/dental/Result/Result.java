@@ -10,7 +10,9 @@ public class Result {
 
 	private PixelCalculation pixelCalculate;
 	private Area area;
-	
+	private int totalPixel;
+	private float totalArea;	
+
 	public Result() throws IOException {
 		
 		BufferedImage address, clustered;
@@ -22,12 +24,19 @@ public class Result {
 	    clustered = new BufferedImage(width,height,address.getType());
 	    
 	    pixelCalculate = new PixelCalculation(width, height, address);
-	    int totalPixel = pixelCalculate.pixelCalculation();
+	    totalPixel = pixelCalculate.pixelCalculation();
 	    
 	    area = new Area(totalPixel, width*height);
-	    int totalArea = area.calculateTotalArea();
+	    totalArea = area.calculateTotalArea();
 	    
 	    ImageIO.write(address,"jpg",new File("resource/test.jpg"));
 	    System.out.println(totalPixel + "\n" + totalArea);
+	}
+	
+	public int getTotalPixel() {
+		return totalPixel;
+	}
+	public float getTotalArea() {
+		return totalArea;
 	}
 }

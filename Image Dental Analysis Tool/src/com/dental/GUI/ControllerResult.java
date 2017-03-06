@@ -19,6 +19,7 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -48,6 +49,12 @@ public class ControllerResult {
 	@FXML
 	MenuItem itmExit = new MenuItem();
 	
+	@FXML
+	TextArea totalPixel = new TextArea();
+	
+	@FXML
+	TextArea totalArea = new TextArea();
+	
 	public class ControllerImage implements Initializable {
 		
 		@Override
@@ -59,7 +66,9 @@ public class ControllerResult {
 	@FXML
 	private void onClickResults() throws IOException {	
 		new ClusteringAlgorithm();
-		new Result();
+		Result newResult = new Result();
+		totalPixel.setText(Integer.toString(newResult.getTotalPixel()));
+		totalArea.setText(String.valueOf(newResult.getTotalArea()));		
 	}	
 
 	@FXML
