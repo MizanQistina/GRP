@@ -9,6 +9,7 @@ import org.opencv.highgui.Highgui;
 public class LoadImage {
 
 	private static Mat newImage;
+	private PreProcessing dest;
 	
 	public LoadImage(File SelectedFile){
 		
@@ -17,10 +18,9 @@ public class LoadImage {
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		newImage = Highgui.imread(address,Highgui.CV_LOAD_IMAGE_COLOR);
 		
-		PreProcessing dest = new PreProcessing(newImage);
+		dest = new PreProcessing(newImage);
 		
 		// Check project file to see the preprocessed image
-		Highgui.imwrite("preprocess.jpg",dest.preProcessing());
-		
+		Highgui.imwrite("resource/preprocess.jpg",dest.preProcessing());
 	}
 }

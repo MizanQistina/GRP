@@ -200,7 +200,7 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@FXML
 	private void onClickEnchance() {		
-		LoadImage im = new LoadImage(getSelectedfile());
+		new LoadImage(getSelectedfile());
 	}
 	
 	@FXML
