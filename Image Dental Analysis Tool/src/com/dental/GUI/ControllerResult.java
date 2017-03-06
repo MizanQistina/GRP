@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.dental.ClusterAlgorithm.ClusteringAlgorithm;
+import com.dental.Result.Result;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,8 +57,9 @@ public class ControllerResult {
 	}
 
 	@FXML
-	private void onClickResults() {	
-		// will be updated
+	private void onClickResults() throws IOException {	
+		new ClusteringAlgorithm();
+		new Result();
 	}	
 
 	@FXML

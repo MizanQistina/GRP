@@ -101,7 +101,7 @@ public class ControllerImage extends Main implements Initializable {
 				System.out.println("Brightness Slider Changed (newValue: " + newValue.intValue() + ")\n");
 			}
 		});
-		File file = new File("resource/saved.png");
+		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
 		try	
 		{
@@ -142,7 +142,7 @@ public class ControllerImage extends Main implements Initializable {
 		try {
 		    // retrieve image
 		    BufferedImage bi = bimg;
-		    File outputfile = new File("resource/saved.png");
+		    File outputfile = new File("resource/saved.jpg");
 		    ImageIO.write(bi, "png", outputfile);
 		    
 			btnNext.setStyle("-fx-background-color: #1ed7cb");
@@ -193,7 +193,7 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@FXML
 	private void onClickClose() throws IOException {
-		 Path fileToDeletePath = Paths.get("resource/saved.png");
+		 Path fileToDeletePath = Paths.get("resource/saved.jpg");
 		    Files.delete(fileToDeletePath);
 		    imageView.setImage(null);
 	}
