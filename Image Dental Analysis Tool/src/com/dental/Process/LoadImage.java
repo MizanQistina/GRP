@@ -14,7 +14,6 @@ public class LoadImage {
 	public LoadImage(File SelectedFile){
 		
 		String address = SelectedFile.toString();
-		System.out.println(address);
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		newImage = Highgui.imread(address,Highgui.CV_LOAD_IMAGE_COLOR);
 		

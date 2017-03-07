@@ -3,6 +3,11 @@ package com.dental.Result;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class PixelCalculation {
 	
@@ -11,6 +16,9 @@ public class PixelCalculation {
 	private int totalPixels = 0;
 	private float HSV[] = new float[3];
 	private BufferedImage address;
+	private ArrayList<Integer> brightness = new ArrayList<Integer>();
+	private HashMap<Integer, Integer> graph = new HashMap<Integer, Integer>();
+	private int brightnessCount = 0;
 
 	// Constructor
 	public PixelCalculation(int width, int height, BufferedImage address) {
@@ -30,15 +38,23 @@ public class PixelCalculation {
 	                 changePixels(X,Y);
 	            }
 	    }
+	    Collections.sort(brightness);
+	    brightnessCount();
+	    
+	    // Get a set of the entries
+	     Set set = graph.entrySet();
+	      
+	     // Get an iterator
+	     Iterator i = set.iterator();
+      
+	     // Display elements
+	     while(i.hasNext()) {
+	    	 Map.Entry me = (Map.Entry)i.next();
+	     }
 	    
 	    return totalPixels;
 	}
 	
-	private void graph(float c){
-		
-		ArrayList brightness = new ArrayList();
-		
-	}
 	// Changes the RGB value to the HSV value
 	private void RGBtoHSV(int x, int y){
 		
@@ -62,12 +78,29 @@ public class PixelCalculation {
 		if(( a >= 75 && a < 97) && ( b >= 40 && b < 101  ) && (c >= 40 && c < 101)) {
         	flag = true;
         	totalPixels++;
-        	graph(c);
+        	brightness.add((int) c);        	
         }
 		
 		// Converts the non-pink and non-magenta pixel to white pixel
 		if(flag == false){
 			address.setRGB(x, y, white.getRGB());
         }
+	}
+	
+	private void brightnessCount(){
+		int pivot = brightness.get(0);
+		graph.put(pivot,0);
+		for(int i=0; i<totalPixels; i++){
+			
+			if(pivot == brightness.get(i)){
+				brightnessCount++;
+			}
+			else{
+				graph.put(pivot,brightnessCount);
+				pivot = brightness.get(i);
+				brightnessCount = 1;
+			}
+			graph.put(pivot,brightnessCount);
+		}
 	}
 }

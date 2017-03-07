@@ -156,8 +156,6 @@ public class ControllerImage extends Main implements Initializable {
 	    int width          = bimg.getWidth();				
 	    int height         = bimg.getHeight();
 	    
-	    // For developer reference
-	    System.out.println("The width of the image is:" + width + "The height of the image is:" + height);
 	    
 	    // Check if the image size is acceptable
 	    if(width>1366&&height>768||width>1366||height>768) {

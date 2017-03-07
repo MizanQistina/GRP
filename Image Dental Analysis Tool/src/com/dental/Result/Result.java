@@ -15,13 +15,13 @@ public class Result {
 
 	public Result() throws IOException {
 		
-		BufferedImage address, clustered;
-		int width, height, totalPixels = 0;
+		BufferedImage address;
+		int width, height;
 	
 		address = ImageIO.read(new File("resource/clustered.jpg"));
 		width = address.getWidth();
 		height = address.getHeight();
-	    clustered = new BufferedImage(width,height,address.getType());
+	    new BufferedImage(width,height,address.getType());
 	    
 	    pixelCalculate = new PixelCalculation(width, height, address);
 	    totalPixel = pixelCalculate.pixelCalculation();
@@ -30,7 +30,6 @@ public class Result {
 	    totalArea = area.calculateTotalArea();
 	    
 	    ImageIO.write(address,"jpg",new File("resource/test.jpg"));
-	    System.out.println(totalPixel + "\n" + totalArea);
 	}
 	
 	public int getTotalPixel() {
