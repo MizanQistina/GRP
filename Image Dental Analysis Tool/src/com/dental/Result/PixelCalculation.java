@@ -41,17 +41,6 @@ public class PixelCalculation {
 	    Collections.sort(brightness);
 	    brightnessCount();
 	    
-	    // Get a set of the entries
-	     Set set = graph.entrySet();
-	      
-	     // Get an iterator
-	     Iterator i = set.iterator();
-      
-	     // Display elements
-	     while(i.hasNext()) {
-	    	 Map.Entry me = (Map.Entry)i.next();
-	     }
-	    
 	    return totalPixels;
 	}
 	

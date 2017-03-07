@@ -2,10 +2,10 @@ package com.dental.Result;
 
 public class Area {
 
-	private int totalPixel = 0;
+	private float totalPixel = 0;
 	private int size = 0;
 	
-	public Area(int totalPixel, int size) {
+	public Area(float totalPixel, int size) {
 		this.totalPixel = totalPixel;
 		this.size = size;
 	}

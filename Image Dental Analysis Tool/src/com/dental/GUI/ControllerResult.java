@@ -67,8 +67,9 @@ public class ControllerResult {
 	private void onClickResults() throws IOException {	
 		new ClusteringAlgorithm();
 		Result newResult = new Result();
-		totalPixel.setText(Integer.toString(newResult.getTotalPixel()));
-		totalArea.setText(String.valueOf(newResult.getTotalArea()));		
+		totalPixel.setText(Integer.toString((int)newResult.getTotalPixel()));
+		totalArea.setText(String.format("%.2f", newResult.getTotalArea()));	
+		
 	}	
 
 	@FXML

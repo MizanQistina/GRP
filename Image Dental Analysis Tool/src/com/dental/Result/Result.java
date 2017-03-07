@@ -10,7 +10,7 @@ public class Result {
 
 	private PixelCalculation pixelCalculate;
 	private Area area;
-	private int totalPixel;
+	private float totalPixel;
 	private float totalArea;	
 
 	public Result() throws IOException {
@@ -32,7 +32,7 @@ public class Result {
 	    ImageIO.write(address,"jpg",new File("resource/test.jpg"));
 	}
 	
-	public int getTotalPixel() {
+	public float getTotalPixel() {
 		return totalPixel;
 	}
 	public float getTotalArea() {
