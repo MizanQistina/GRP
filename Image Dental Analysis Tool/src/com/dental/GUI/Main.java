@@ -1,8 +1,16 @@
 package com.dental.GUI;
 	
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -15,7 +23,23 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.show();	
+			primaryStage.show();
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+				@Override
+				public void handle(WindowEvent t)
+				{	
+					Path fileToDeletePath = Paths.get("resource/saved.jpg");
+					try {
+						Files.delete(fileToDeletePath);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Platform.exit();
+					System.exit(0);
+				}
+				
+				});
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

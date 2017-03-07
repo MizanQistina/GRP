@@ -80,6 +80,7 @@ public class ControllerImage extends Main implements Initializable {
 	ImageView imageView = new ImageView();
 	
 	private File Selectedfile;
+	private boolean isEnhanced=false;
 	
 
 	@Override
@@ -108,7 +109,12 @@ public class ControllerImage extends Main implements Initializable {
 			fr = new FileReader(file);
 			Image image = new Image(file.toURI().toString());
 		    ImageView iv = new ImageView(image);
-		    
+		    iv.setFitWidth(300);
+		    iv.setPreserveRatio(true);
+			iv.setSmooth(true);
+			iv.setCache(true);
+			iv.setX(120);
+		    Preview.getChildren().add(iv);
 		    if(!iv.isCache())
 		    {
 				btnNext.setStyle("-fx-background-color: #a8a8a8");
@@ -143,7 +149,7 @@ public class ControllerImage extends Main implements Initializable {
 		    // retrieve image
 		    BufferedImage bi = bimg;
 		    File outputfile = new File("resource/saved.jpg");
-		    ImageIO.write(bi, "png", outputfile);
+		    ImageIO.write(bi, "jpg", outputfile);
 		    
 			btnNext.setStyle("-fx-background-color: #1ed7cb");
 			btnNext.setDisable(false);
@@ -192,13 +198,46 @@ public class ControllerImage extends Main implements Initializable {
 	@FXML
 	private void onClickClose() throws IOException {
 		 Path fileToDeletePath = Paths.get("resource/saved.jpg");
-		    Files.delete(fileToDeletePath);
-		    imageView.setImage(null);
+		 Files.delete(fileToDeletePath);
+		 imageView.setImage(null);
+		 Preview.getChildren().clear();
 	}
 	
 	@FXML
 	private void onClickEnchance() {		
 		new LoadImage(getSelectedfile());
+		isEnhanced=true;
+		File file = new File("resource/preprocess.jpg");
+		FileReader fr = null;
+		try	
+		{
+			fr = new FileReader(file);
+			Image image = new Image(file.toURI().toString());
+		    ImageView iv = new ImageView(image);
+		    iv.setFitWidth(300);
+		    iv.setPreserveRatio(true);
+			iv.setSmooth(true);
+			iv.setCache(true);
+			iv.setX(120);
+			Preview.getChildren().clear();
+			Preview.getChildren().add(iv);
+		    
+		    
+		    if(!iv.isCache())
+		    {
+				btnNext.setStyle("-fx-background-color: #a8a8a8");
+				btnNext.setDisable(true);
+
+				System.out.println("File doesn't display");
+		    }
+		    
+		}catch(FileNotFoundException e)
+		{
+			btnNext.setStyle("-fx-background-color: #a8a8a8");
+			btnNext.setDisable(true);
+
+			System.out.println("File doesn't exist");
+		}
 	}
 	
 	@FXML
