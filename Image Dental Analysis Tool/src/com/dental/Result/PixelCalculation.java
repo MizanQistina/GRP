@@ -105,4 +105,8 @@ public class PixelCalculation {
 			graph.put(pivot,brightnessCount);
 		}
 	}
+	
+	public HashMap<Integer,Integer> getHashMap_Data(){
+		return graph;
+	}
 }

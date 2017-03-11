@@ -2,7 +2,12 @@ package com.dental.GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import com.dental.ClusterAlgorithm.ClusteringAlgorithm;
 import com.dental.Result.Result;
@@ -13,6 +18,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
@@ -55,6 +63,11 @@ public class ControllerResult {
 	@FXML
 	TextArea totalArea = new TextArea();
 	
+	@FXML
+	LineChart<Integer, Integer> lineChart;
+	
+	private HashMap<Integer, Integer> graph;
+	
 	public class ControllerImage implements Initializable {
 		
 		@Override
@@ -69,8 +82,27 @@ public class ControllerResult {
 		Result newResult = new Result();
 		totalPixel.setText(Integer.toString((int)newResult.getTotalPixel()));
 		totalArea.setText(String.format("%.2f", newResult.getTotalArea()));	
+		graph = newResult.getPixelCalculate().getHashMap_Data();
+		plotGraph();
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void plotGraph(){
+		XYChart.Series<Integer, Integer> series = new XYChart.Series<Integer, Integer>();
+		Set set = graph.entrySet();
+	    Iterator i = set.iterator();
+	    
+	    while(i.hasNext()) {
+	        Map.Entry me = (Map.Entry)i.next();
+	        System.out.print(me.getKey() + ": ");
+	        System.out.println(me.getValue());
+	        
+	        series.getData().add(new XYChart.Data<Integer, Integer>((int)me.getKey(),(int)me.getValue()));
+	     }
+	    System.out.println();
 		
-	}	
+		lineChart.getData().add(series);
+	}
 
 	@FXML
 	private void onClickBack() throws IOException {
@@ -121,4 +153,5 @@ public class ControllerResult {
 	private void onClickMenuExit(){
 		Platform.exit();
 	}
+	
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -40,9 +39,9 @@
          <tooltip>
             <Tooltip text="Click this button to show the results of the processed image" />
          </tooltip></Button>
-      <LineChart layoutX="27.0" layoutY="65.0" prefHeight="434.0" prefWidth="615.0">
+      <LineChart fx:id="lineChart" layoutX="27.0" layoutY="65.0" prefHeight="434.0" prefWidth="615.0">
         <xAxis>
-          <CategoryAxis label="Percentage of Colour Intensity" side="BOTTOM" />
+          <NumberAxis label="Percentage of Colour Intensity" side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis label="Pixels Count" side="LEFT" />

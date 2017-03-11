@@ -32,6 +32,10 @@ public class Result {
 	    ImageIO.write(address,"jpg",new File("resource/test.jpg"));
 	}
 	
+	public PixelCalculation getPixelCalculate() {
+		return pixelCalculate;
+	}
+
 	public float getTotalPixel() {
 		return totalPixel;
 	}
