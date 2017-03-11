@@ -120,7 +120,9 @@ public class ControllerImage extends Main implements Initializable {
 		    {
 				btnNext.setStyle("-fx-background-color: #a8a8a8");
 				btnNext.setDisable(true);
-
+				itmClose.setStyle("-fx-background-color: #a8a8a8");
+				itmClose.setDisable(true);
+				
 				System.out.println("File doesn't display");
 		    }
 		    
@@ -128,7 +130,9 @@ public class ControllerImage extends Main implements Initializable {
 		{
 			btnNext.setStyle("-fx-background-color: #a8a8a8");
 			btnNext.setDisable(true);
-
+			itmClose.setStyle("-fx-background-color: #a8a8a8");
+			itmClose.setDisable(true);
+			
 			System.out.println("File doesn't exist");
 		}
 	}	
@@ -154,9 +158,17 @@ public class ControllerImage extends Main implements Initializable {
 		    
 			btnNext.setStyle("-fx-background-color: #1ed7cb");
 			btnNext.setDisable(false);
+			itmClose.setStyle("-fx-background-color: #1ed7cb");
+			itmClose.setDisable(false);
+			itmOpen.setStyle("-fx-background-color: #1ed7cb");
+			itmOpen.setDisable(true);
 		} catch (IOException e) {
 			btnNext.setStyle("-fx-background-color: #a8a8a8");
 			btnNext.setDisable(true);
+			itmClose.setStyle("-fx-background-color: #a8a8a8");
+			itmClose.setDisable(true);
+			itmOpen.setStyle("-fx-background-color: #a8a8a8");
+			itmOpen.setDisable(false);
 		}
 	    
 	    // Getting dimensions of the image
@@ -228,6 +240,8 @@ public class ControllerImage extends Main implements Initializable {
 		    {
 				btnNext.setStyle("-fx-background-color: #a8a8a8");
 				btnNext.setDisable(true);
+				itmClose.setStyle("-fx-background-color: #a8a8a8");
+				itmClose.setDisable(true);
 
 				System.out.println("File doesn't display");
 		    }
@@ -236,7 +250,9 @@ public class ControllerImage extends Main implements Initializable {
 		{
 			btnNext.setStyle("-fx-background-color: #a8a8a8");
 			btnNext.setDisable(true);
-
+			itmClose.setStyle("-fx-background-color: #a8a8a8");
+			itmClose.setDisable(true);
+			
 			System.out.println("File doesn't exist");
 		}
 	}
