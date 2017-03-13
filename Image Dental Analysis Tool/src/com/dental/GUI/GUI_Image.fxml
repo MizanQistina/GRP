@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -19,8 +20,11 @@
             <Font name="Consolas Bold" size="20.0" />
          </font>
          <tooltip>
-            <Tooltip text="Click this button to browse image" />
-         </tooltip></Button>
+            <Tooltip text="Click this button to enhance image" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <MenuBar prefHeight="44.0" prefWidth="1065.0">
         <menus>
           <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
@@ -39,6 +43,12 @@
          <effect>
             <ColorAdjust brightness="0.13" contrast="-0.05" hue="-0.1" saturation="-0.12" />
          </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Click Open to open file, Close to close file, Exit to exit this program, About for software information" />
+         </tooltip>
       </MenuBar>
       <Button fx:id="btnNext" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="150.0" text="Next &gt;&gt;" textAlignment="CENTER">
          <font>
@@ -46,7 +56,10 @@
          </font>
          <tooltip>
             <Tooltip text="Click this button to go to the next stage" />
-         </tooltip></Button>
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Text layoutX="430.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PREVIEW IMAGE HERE" textAlignment="CENTER" wrappingWidth="240.6708984375">
          <font>
             <Font name="Segoe UI Light" size="23.0" />
@@ -58,8 +71,20 @@
              <Font name="Segoe UI Light" size="20.0" />
           </font>
        </Text>
-       <Slider fx:id="sharpSlider" layoutX="407.0" layoutY="565.0" prefHeight="31.0" prefWidth="280.0" />
-       <Slider fx:id="brightSlider" layoutX="407.0" layoutY="605.0" prefHeight="31.0" prefWidth="280.0" />
+       <Slider fx:id="sharpSlider" layoutX="407.0" layoutY="565.0" prefHeight="31.0" prefWidth="280.0">
+         <tooltip>
+            <Tooltip text="Drag to the left to increase sharpness, right to lower sharpness" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Slider>
+       <Slider fx:id="brightSlider" layoutX="407.0" layoutY="605.0" prefHeight="31.0" prefWidth="280.0">
+         <tooltip>
+            <Tooltip text="Drag to the left to increase brightness, right to lower brightness" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Slider>
        <Text layoutX="427.0" layoutY="607.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
           <font>
              <Font name="Segoe UI Light" size="20.0" />

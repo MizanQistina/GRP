@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -24,6 +25,12 @@
             </items>
           </Menu>
         </menus>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Click About for software information" />
+         </tooltip>
       </MenuBar>
       <Button fx:id="btnBack" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="150.0" text="&lt;&lt; Back">
          <font>
@@ -31,14 +38,20 @@
          </font>
          <tooltip>
             <Tooltip text="Click this button to go to previous stage" />
-         </tooltip></Button>
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Button fx:id="btnResult" layoutX="450.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickResults" prefHeight="50.0" prefWidth="160.0" text="Show Results" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
          <tooltip>
             <Tooltip text="Click this button to show the results of the processed image" />
-         </tooltip></Button>
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <LineChart fx:id="lineChart" layoutX="27.0" layoutY="65.0" prefHeight="434.0" prefWidth="615.0">
         <xAxis>
           <NumberAxis fx:id="intensity" label="Percentage of Colour Intensity" side="BOTTOM" />
@@ -51,10 +64,10 @@
       <Label layoutX="697.0" layoutY="441.0" prefHeight="21.0" prefWidth="101.0" text="Total Area (%):" />
       <TextArea fx:id="totalPixel" layoutX="807.0" layoutY="361.0" prefHeight="47.0" prefWidth="150.0" />
       <TextArea fx:id="totalArea" layoutX="807.0" layoutY="428.0" prefHeight="48.0" prefWidth="150.0" />
-      <TableView layoutX="656.0" layoutY="80.0" prefHeight="249.0" prefWidth="373.0">
+      <TableView fx:id="table" layoutX="656.0" layoutY="80.0" prefHeight="249.0" prefWidth="373.0">
         <columns>
-          <TableColumn prefWidth="229.0" text="Percentage of Colour Intensity" />
-          <TableColumn prefWidth="133.0" text="Pixels Count" />
+          <TableColumn fx:id="colPercentage" prefWidth="229.0" text="Percentage of Colour Intensity" />
+          <TableColumn fx:id="colPixel" prefWidth="133.0" text="Pixels Count" />
         </columns>
       </TableView>
       <Button fx:id="btnExit" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickExit" prefHeight="50.0" prefWidth="150.0" text="Exit">

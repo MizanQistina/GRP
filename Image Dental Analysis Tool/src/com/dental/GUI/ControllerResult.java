@@ -11,8 +11,11 @@ import java.util.Set;
 
 import com.dental.ClusterAlgorithm.ClusteringAlgorithm;
 import com.dental.Result.Result;
+import com.dental.Result.Table;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,8 +30,11 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class ControllerResult {
@@ -69,6 +75,15 @@ public class ControllerResult {
 	@FXML
 	NumberAxis intensity = new NumberAxis();
 	
+	@FXML
+	TableView<Table> table;
+	
+	@FXML
+    TableColumn<Table, Integer> colPercentage;
+
+    @FXML
+    TableColumn<Table, Integer> colPixel;
+	
 	private HashMap<Integer, Integer> graph;
 	
 	public class ControllerImage implements Initializable {
@@ -87,6 +102,7 @@ public class ControllerResult {
 		totalArea.setText(String.format("%.2f", newResult.getTotalArea()));	
 		graph = newResult.getPixelCalculate().getHashMap_Data();
 		plotGraph();
+		setTable();
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -112,6 +128,22 @@ public class ControllerResult {
 	    }
 	    //display line chart
 		lineChart.getData().add(series);
+	}
+	
+	@FXML
+	@SuppressWarnings("rawtypes")
+	private void setTable(){
+		colPercentage.setCellValueFactory(new PropertyValueFactory<Table, Integer>("percentage"));
+		colPixel.setCellValueFactory(new PropertyValueFactory<Table, Integer>("pixelCount"));
+		Set set = graph.entrySet();
+	    Iterator i = set.iterator();
+	    ObservableList<Table> data = FXCollections.observableArrayList();
+	    
+	    while(i.hasNext()) {
+	        Map.Entry me = (Map.Entry)i.next();
+	        data.add(new Table((int)me.getKey(), (int)me.getValue()));
+	     }
+		table.setItems(data);
 	}
 
 	@FXML

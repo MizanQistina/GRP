@@ -30,7 +30,14 @@ Button{
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
     -fx-text-fill: #FFFFFF;
-
+}
   
-  }
+  .button:hover {
+    -fx-background-color: #000000;
+}
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: #1ED7CB;
+  -fx-text-fill: #1d1d1d;
+}
   
