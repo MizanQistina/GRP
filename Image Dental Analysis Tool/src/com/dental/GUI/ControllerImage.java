@@ -81,7 +81,7 @@ public class ControllerImage extends Main implements Initializable {
 	ImageView imageView = new ImageView();
 	
 	private File Selectedfile;
-	private boolean isEnhanced=false;
+	private Path fileToDeletePath = Paths.get("resource/saved.jpg");
 	
 
 	@Override
@@ -196,8 +196,7 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@FXML
 	private void onClickClose() throws IOException {
-		 Path fileToDeletePath = Paths.get("resource/saved.jpg");
-		 Files.delete(fileToDeletePath);
+		Files.deleteIfExists(fileToDeletePath);
 		 imageView.setImage(null);
 		 Preview.getChildren().clear();
 	}
@@ -205,7 +204,6 @@ public class ControllerImage extends Main implements Initializable {
 	@FXML
 	private void onClickEnchance() {		
 		new LoadImage(getSelectedfile());
-		isEnhanced=true;
 		File file = new File("resource/preprocess.jpg");
 		FileReader fr = null;
 		try	
@@ -281,8 +279,11 @@ public class ControllerImage extends Main implements Initializable {
 	
 	//When EXIT in File is clicked, the entire application is closed
 	@FXML 
-	private void onClickExit() {
+	private void onClickExit() throws IOException {
+		System.out.println(fileToDeletePath.getFileName());
+		Files.deleteIfExists(fileToDeletePath);
 		Platform.exit();
+		System.exit(0);
 	}
 	
 	public File getSelectedfile() {

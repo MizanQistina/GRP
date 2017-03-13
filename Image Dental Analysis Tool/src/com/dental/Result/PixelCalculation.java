@@ -39,21 +39,7 @@ public class PixelCalculation {
 	            }
 	    }
 	    Collections.sort(brightness);
-	    brightnessCount();
-	    
-	    Set set = graph.entrySet();
-	      
-	      // Get an iterator
-	      Iterator i = set.iterator();
-	      
-	      // Display elements
-	      while(i.hasNext()) {
-	         Map.Entry me = (Map.Entry)i.next();
-	         System.out.print(me.getKey() + ": ");
-	         System.out.println(me.getValue());
-	      }
-	      System.out.println();
-	    
+	    brightnessCount();	    
 	    return totalPixels;
 	}
 	

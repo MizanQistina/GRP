@@ -66,6 +66,9 @@ public class ControllerResult {
 	@FXML
 	LineChart<Integer, Integer> lineChart;
 	
+	@FXML
+	NumberAxis intensity = new NumberAxis();
+	
 	private HashMap<Integer, Integer> graph;
 	
 	public class ControllerImage implements Initializable {
@@ -88,19 +91,26 @@ public class ControllerResult {
 	
 	@SuppressWarnings("rawtypes")
 	public void plotGraph(){
+		
+		//clear graph
+		lineChart.getData().clear();
+		
+		//set x axis properties
+		intensity.setAutoRanging(false);
+		intensity.setLowerBound(40);
+		intensity.setUpperBound(100);
+		intensity.setTickUnit(5);
+		
+		//add data to line chart
 		XYChart.Series<Integer, Integer> series = new XYChart.Series<Integer, Integer>();
 		Set set = graph.entrySet();
 	    Iterator i = set.iterator();
 	    
 	    while(i.hasNext()) {
-	        Map.Entry me = (Map.Entry)i.next();
-	        System.out.print(me.getKey() + ": ");
-	        System.out.println(me.getValue());
-	        
+	        Map.Entry me = (Map.Entry)i.next();	        
 	        series.getData().add(new XYChart.Data<Integer, Integer>((int)me.getKey(),(int)me.getValue()));
-	     }
-	    System.out.println();
-		
+	    }
+	    //display line chart
 		lineChart.getData().add(series);
 	}
 

@@ -30,11 +30,12 @@ public class Main extends Application {
 				{	
 					Path fileToDeletePath = Paths.get("resource/saved.jpg");
 					try {
-						Files.delete(fileToDeletePath);
+						Files.deleteIfExists(fileToDeletePath);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
 					Platform.exit();
 					System.exit(0);
 				}

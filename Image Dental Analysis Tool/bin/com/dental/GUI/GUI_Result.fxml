@@ -41,10 +41,10 @@
          </tooltip></Button>
       <LineChart fx:id="lineChart" layoutX="27.0" layoutY="65.0" prefHeight="434.0" prefWidth="615.0">
         <xAxis>
-          <NumberAxis label="Percentage of Colour Intensity" side="BOTTOM" />
+          <NumberAxis fx:id="intensity" label="Percentage of Colour Intensity" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis label="Pixels Count" side="LEFT" />
+          <NumberAxis fx:id="pixelCount" label="Pixels Count" side="LEFT" />
         </yAxis>
       </LineChart>
       <Label layoutX="698.0" layoutY="362.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
