@@ -20,6 +20,6 @@ public class LoadImage {
 		dest = new PreProcessing(newImage);
 		
 		// Check project file to see the preprocessed image
-		Highgui.imwrite("resource/preprocess.jpg",dest.preProcessing());
+		Highgui.imwrite("resource/saved.jpg",dest.preProcessing());
 	}
 }

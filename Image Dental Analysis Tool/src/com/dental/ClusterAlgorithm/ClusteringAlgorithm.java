@@ -11,7 +11,7 @@ public class ClusteringAlgorithm {
 	
 	public ClusteringAlgorithm(){
 		
-		String address = "resource/preprocess.jpg";
+		String address = "resource/saved.jpg";
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		preprocessImage = Highgui.imread(address,Highgui.CV_LOAD_IMAGE_COLOR);
 		

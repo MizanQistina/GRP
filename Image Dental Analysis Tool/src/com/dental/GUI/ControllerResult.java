@@ -2,6 +2,9 @@ package com.dental.GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -85,6 +88,7 @@ public class ControllerResult {
     TableColumn<Table, Integer> colPixel;
 	
 	private HashMap<Integer, Integer> graph;
+	private Path fileToDeletePath = Paths.get("resource/saved.jpg");
 	
 	public class ControllerImage implements Initializable {
 		
@@ -126,6 +130,9 @@ public class ControllerResult {
 	        Map.Entry me = (Map.Entry)i.next();	        
 	        series.getData().add(new XYChart.Data<Integer, Integer>((int)me.getKey(),(int)me.getValue()));
 	    }
+	    
+	    series.setName("Mean Shift Result");
+	    
 	    //display line chart
 		lineChart.getData().add(series);
 	}
@@ -159,7 +166,9 @@ public class ControllerResult {
 	}
 	
 	@FXML
-	private void onClickExit(){
+	private void onClickExit() throws IOException{
+		Files.deleteIfExists(fileToDeletePath);
+		Platform.exit();
 		System.exit(0);
 	}
 	

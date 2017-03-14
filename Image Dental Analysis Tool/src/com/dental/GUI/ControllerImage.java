@@ -86,6 +86,7 @@ public class ControllerImage extends Main implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		// Listen for Sharpness slider value changes
 		sharpSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
@@ -131,6 +132,7 @@ public class ControllerImage extends Main implements Initializable {
 		}
 	}	
 		
+	@SuppressWarnings("unused")
 	@FXML
 	private void onClickOpen() throws IOException {		
 		
@@ -141,70 +143,75 @@ public class ControllerImage extends Main implements Initializable {
 	    chooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg") );             		
 	    Selectedfile = chooser.showOpenDialog(new Stage());
 	    
-	    // Taking file and storing it as image
-	    BufferedImage bimg = ImageIO.read(Selectedfile);
+	    if(Selectedfile != null){
+	    	
+	    	// Taking file and storing it as image
+	    	BufferedImage bimg = ImageIO.read(Selectedfile);
 	    
-		try {
-		    // retrieve image
-		    BufferedImage bi = bimg;
-		    File outputfile = new File("resource/saved.jpg");
-		    ImageIO.write(bi, "jpg", outputfile);
+			try {
+			    // retrieve image
+			    BufferedImage bi = bimg;
+			    File outputfile = new File("resource/saved.jpg");
+			    ImageIO.write(bi, "jpg", outputfile);
+			    
+				btnNext.setStyle("-fx-background-color: #1ed7cb");
+				btnNext.setDisable(false);
+			} catch (IOException e) {
+				btnNext.setStyle("-fx-background-color: #a8a8a8");
+				btnNext.setDisable(true);
+			}
 		    
-			btnNext.setStyle("-fx-background-color: #1ed7cb");
-			btnNext.setDisable(false);
-		} catch (IOException e) {
-			btnNext.setStyle("-fx-background-color: #a8a8a8");
-			btnNext.setDisable(true);
-		}
-	    
-	    // Getting dimensions of the image
-	    int width          = bimg.getWidth();				
-	    int height         = bimg.getHeight();
-	    
-	    
-	    // Check if the image size is acceptable
-	    if(width>1366&&height>768||width>1366||height>768) {
-	    	
-	    	// Alert box appears when if statement is true 
-	    	Alert alert = new Alert(AlertType.ERROR);   		
-	    	alert.setTitle("Error");
-	    	alert.setHeaderText("Uploaded Failed");
-	    	alert.setContentText("Upload image less than 1.1 mbs");
-	    	alert.showAndWait();
+		    // Getting dimensions of the image
+		    int width          = bimg.getWidth();				
+		    int height         = bimg.getHeight();
+		    
+		    
+		    // Check if the image size is acceptable
+		    if(width>1366&&height>768||width>1366||height>768) {
+		    	
+		    	// Alert box appears when if statement is true 
+		    	Alert alert = new Alert(AlertType.ERROR);   		
+		    	alert.setTitle("Error");
+		    	alert.setHeaderText("Uploaded Failed");
+		    	alert.setContentText("Upload image less than 1.1 mbs");
+		    	alert.showAndWait();
+		    }
+		    	
+		    // If file is of appropriate dimensions run the following code
+		   	else {
+		    		
+		   		// Converting buffered image into an Image so JavaFX methods work
+		   		Image image = SwingFXUtils.toFXImage(bimg, null);
+		   		imageView.setImage(image);
+		   		
+		   		// Only ImageView is resized to fit not the original "image"
+		   		imageView.setFitWidth(300);
+		   		
+		   		// Making sure previewed image is not too big for screen
+		   		imageView.setPreserveRatio(true);
+		   		imageView.setSmooth(true);
+		   		imageView.setCache(true);
+		   		imageView.setX(120);
+		   		
+		   		// Prints out image inside HBox "Preview"
+		   		Preview.getChildren().add(imageView);
+		   } 
 	    }
-	    	
-	    // If file is of appropriate dimensions run the following code
-	   	else {
-	    		
-	   		// Converting buffered image into an Image so JavaFX methods work
-	   		Image image = SwingFXUtils.toFXImage(bimg, null);
-	   		imageView.setImage(image);
-	   		
-	   		// Only ImageView is resized to fit not the original "image"
-	   		imageView.setFitWidth(300);
-	   		
-	   		// Making sure previewed image is not too big for screen
-	   		imageView.setPreserveRatio(true);
-	   		imageView.setSmooth(true);
-	   		imageView.setCache(true);
-	   		imageView.setX(120);
-	   		
-	   		// Prints out image inside HBox "Preview"
-	   		Preview.getChildren().add(imageView);
-	   } 
+	    else if(Selectedfile == null){
+	    	//do nothing
+	    }
 	}
 	
 	@FXML
 	private void onClickClose() throws IOException {
-		Files.deleteIfExists(fileToDeletePath);
 		 imageView.setImage(null);
 		 Preview.getChildren().clear();
 	}
 	
 	@FXML
-	private void onClickEnchance() {		
-		new LoadImage(getSelectedfile());
-		File file = new File("resource/preprocess.jpg");
+	private void onClickEnchance() {
+		new LoadImage(fileToDeletePath.toFile());
+		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
 		try	
 		{
@@ -280,7 +287,6 @@ public class ControllerImage extends Main implements Initializable {
 	//When EXIT in File is clicked, the entire application is closed
 	@FXML 
 	private void onClickExit() throws IOException {
-		System.out.println(fileToDeletePath.getFileName());
 		Files.deleteIfExists(fileToDeletePath);
 		Platform.exit();
 		System.exit(0);
