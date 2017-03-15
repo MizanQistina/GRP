@@ -48,40 +48,40 @@ public class ControllerImage extends Main implements Initializable {
 	private Slider brightSlider;
 	
 	@FXML
-	Button btnEnhance = new Button();
+	private Button btnEnhance = new Button();
 		
 	@FXML
-	HBox Preview = new HBox();
+	private HBox Preview = new HBox();
 	
 	@FXML
-	Button btnNext = new Button();
+	private Button btnNext = new Button();
 	
 	@FXML
-	MenuBar menuBar = new MenuBar();
+	private MenuBar menuBar = new MenuBar();
 	
 	@FXML
-	Menu file = new Menu("File");
+	private Menu file = new Menu("File");
 	
 	@FXML
-	Menu help = new Menu("Help");
+	private Menu help = new Menu("Help");
 	
 	@FXML
-	MenuItem itmOpen = new MenuItem();
+	private MenuItem itmOpen = new MenuItem();
 	
 	@FXML
-	MenuItem itmClose = new MenuItem();
+	private MenuItem itmClose = new MenuItem();
 	
 	@FXML
-	MenuItem itmExit = new MenuItem();
+	private MenuItem itmExit = new MenuItem();
 	
 	@FXML
-	MenuItem itmAbout = new MenuItem();
+	private MenuItem itmAbout = new MenuItem();
 	
 	@FXML
-	ImageView imageView = new ImageView();
+	private ImageView imageView = new ImageView();
 	
-	private File Selectedfile;
-	private Path fileToDeletePath = Paths.get("resource/saved.jpg");
+	private File selectedfile;
+	//private Path fileToDeletePath = Paths.get("resource/saved.jpg");
 	
 
 	@Override
@@ -123,12 +123,14 @@ public class ControllerImage extends Main implements Initializable {
 				btnNext.setDisable(true);
 				System.out.println("File doesn't display");
 		    }
-		    
+		    fr.close();
 		}catch(FileNotFoundException e)
 		{
 			btnNext.setStyle("-fx-background-color: #a8a8a8");
 			btnNext.setDisable(true);
 			System.out.println("File doesn't exist");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}	
 		
@@ -141,12 +143,12 @@ public class ControllerImage extends Main implements Initializable {
 	    
 	    // File format restrictions - .png, .jpg, .jpeg
 	    chooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg") );             		
-	    Selectedfile = chooser.showOpenDialog(new Stage());
+	    selectedfile = chooser.showOpenDialog(new Stage());
 	    
-	    if(Selectedfile != null){
+	    if(selectedfile != null){
 	    	
 	    	// Taking file and storing it as image
-	    	BufferedImage bimg = ImageIO.read(Selectedfile);
+	    	BufferedImage bimg = ImageIO.read(selectedfile);
 	    
 			try {
 			    // retrieve image
@@ -197,20 +199,21 @@ public class ControllerImage extends Main implements Initializable {
 		   		Preview.getChildren().add(imageView);
 		   } 
 	    }
-	    else if(Selectedfile == null){
+	    else if(selectedfile == null){
 	    	//do nothing
 	    }
 	}
 	
 	@FXML
 	private void onClickClose() throws IOException {
-		 imageView.setImage(null);
-		 Preview.getChildren().clear();
+		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
+		imageView.setImage(null);
+		Preview.getChildren().clear();
 	}
 	
 	@FXML
-	private void onClickEnchance() {
-		new LoadImage(fileToDeletePath.toFile());
+	private void onClickEnchance() throws IOException {
+		new LoadImage(Paths.get("resource/saved.jpg").toFile());
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
 		try	
@@ -233,7 +236,7 @@ public class ControllerImage extends Main implements Initializable {
 				btnNext.setDisable(true);
 				System.out.println("File doesn't display");
 		    }
-		    
+		    fr.close();
 		}catch(FileNotFoundException e)
 		{
 			btnNext.setStyle("-fx-background-color: #a8a8a8");
@@ -287,13 +290,13 @@ public class ControllerImage extends Main implements Initializable {
 	//When EXIT in File is clicked, the entire application is closed
 	@FXML 
 	private void onClickExit() throws IOException {
-		Files.deleteIfExists(fileToDeletePath);
+		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
 		Platform.exit();
 		System.exit(0);
 	}
 	
 	public File getSelectedfile() {
-		return Selectedfile;
+		return selectedfile;
 		
 	}
 }

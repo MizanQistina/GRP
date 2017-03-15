@@ -88,7 +88,7 @@ public class ControllerResult {
     TableColumn<Table, Integer> colPixel;
 	
 	private HashMap<Integer, Integer> graph;
-	private Path fileToDeletePath = Paths.get("resource/saved.jpg");
+	//private Path fileToDeletePath = Paths.get("resource/saved.jpg");
 	
 	public class ControllerImage implements Initializable {
 		
@@ -167,7 +167,7 @@ public class ControllerResult {
 	
 	@FXML
 	private void onClickExit() throws IOException{
-		Files.deleteIfExists(fileToDeletePath);
+		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
 		Platform.exit();
 		System.exit(0);
 	}

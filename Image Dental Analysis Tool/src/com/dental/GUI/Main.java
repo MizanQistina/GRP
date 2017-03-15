@@ -28,9 +28,8 @@ public class Main extends Application {
 				@Override
 				public void handle(WindowEvent t)
 				{	
-					Path fileToDeletePath = Paths.get("resource/saved.jpg");
 					try {
-						Files.deleteIfExists(fileToDeletePath);
+						Files.deleteIfExists(Paths.get("resource/saved.jpg"));
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

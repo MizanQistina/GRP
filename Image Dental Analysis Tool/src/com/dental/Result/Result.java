@@ -29,7 +29,7 @@ public class Result {
 	    area = new Area(totalPixel, width*height);
 	    totalArea = area.calculateTotalArea();
 	    
-	    ImageIO.write(address,"jpg",new File("resource/test.jpg"));
+	    ImageIO.write(address,"jpg",new File("resource/segmented.jpg"));
 	}
 	
 	public PixelCalculation getPixelCalculate() {
