@@ -12,8 +12,13 @@ public class PreProcessing {
 	
 	// Variables for adjusting image brightness
 	private static double alpha = 1;
+
 	private static double beta = -50;
 	
+	// Variables for adjusting image brightness
+	private static int sigmaX = 101;
+	
+
 	public PreProcessing(Mat image){
 		this.original_Image = image;
 	}
@@ -24,7 +29,7 @@ public class PreProcessing {
 		dest = new Mat(original_Image.rows(),original_Image.cols(),original_Image.type());
 		
 		// Sharpened the image
-		Imgproc.GaussianBlur(original_Image, dest, new Size(0,0),101);
+		Imgproc.GaussianBlur(original_Image, dest, new Size(0,0),sigmaX);
 		Core.addWeighted(original_Image, 1.5, dest, -0.5, 0, dest);
 		
 		// Adjust the image brightness 
@@ -32,5 +37,12 @@ public class PreProcessing {
 		
 		return dest;
 		
+	}
+	
+	public static void setSigmaX(int sigmaX) {
+		PreProcessing.sigmaX = sigmaX;
+	}
+	public static void setAlpha(double alpha) {
+		PreProcessing.alpha = alpha;
 	}
 }

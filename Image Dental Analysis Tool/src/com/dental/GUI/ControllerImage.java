@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.scene.image.Image;
@@ -15,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javax.imageio.ImageIO;
 
 import com.dental.Process.LoadImage;
+import com.dental.Process.PreProcessing;
 
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
@@ -23,7 +23,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.NumberAxis;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
@@ -81,29 +80,30 @@ public class ControllerImage extends Main implements Initializable {
 	private ImageView imageView = new ImageView();
 	
 	private File selectedfile;
-	//private Path fileToDeletePath = Paths.get("resource/saved.jpg");
 	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		sharpSlider.setMin(1);
+		brightSlider.setMin(1);
+		
 		// Listen for Sharpness slider value changes
 		sharpSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
-			public void changed(ObservableValue<? extends Number> observable,
-					Number oldValue, Number newValue) {
-				System.out.println("Sharpness Slider Changed (newValue: " + newValue.intValue() + ")\n");
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				PreProcessing.setSigmaX(newValue.intValue());
 			}
 		});
 		
 		// Listen for Brightness slider value changes
 		brightSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
-			public void changed(ObservableValue<? extends Number> observable,
-					Number oldValue, Number newValue) {
-				System.out.println("Brightness Slider Changed (newValue: " + newValue.intValue() + ")\n");
+			public void changed(ObservableValue<? extends Number> observable,Number oldValue, Number newValue) {
+				PreProcessing.setAlpha((double)newValue.intValue());
 			}
 		});
+		
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
 		try	
@@ -134,7 +134,6 @@ public class ControllerImage extends Main implements Initializable {
 		}
 	}	
 		
-	@SuppressWarnings("unused")
 	@FXML
 	private void onClickOpen() throws IOException {		
 		
@@ -209,6 +208,8 @@ public class ControllerImage extends Main implements Initializable {
 		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
 		imageView.setImage(null);
 		Preview.getChildren().clear();
+		PreProcessing.setSigmaX(101);
+		PreProcessing.setAlpha(1);
 	}
 	
 	@FXML
