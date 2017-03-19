@@ -1,15 +1,11 @@
 package com.dental.GUI;
 
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 import com.dental.ClusterAlgorithm.ClusteringAlgorithm;
@@ -21,7 +17,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -29,6 +24,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -43,61 +39,73 @@ import javafx.stage.Stage;
 public class ControllerResult {
 	
 	@FXML
-	Button btnResult = new Button();
-	//
-	@FXML
-	Button btnBack = new Button();
+	private Button btnResult = new Button();
 	
 	@FXML
-	MenuBar menuBar = new MenuBar();
+	private Button btnBack = new Button();
 	
 	@FXML
-	Menu file = new Menu("File");
+	private Button btnShowImage = new Button();
 	
 	@FXML
-	Menu help = new Menu("Help");
+	private MenuBar menuBar = new MenuBar();
 	
 	@FXML
-	MenuItem itmOpen = new MenuItem();
+	private Menu file = new Menu("File");
 	
 	@FXML
-	MenuItem itmClose = new MenuItem();
+	private Menu help = new Menu("Help");
 	
 	@FXML
-	MenuItem itmExit = new MenuItem();
+	private MenuItem itmOpen = new MenuItem();
 	
 	@FXML
-	TextArea totalPixel = new TextArea();
+	private MenuItem itmClose = new MenuItem();
 	
 	@FXML
-	TextArea totalArea = new TextArea();
+	private MenuItem itmExit = new MenuItem();
 	
 	@FXML
-	LineChart<Integer, Integer> lineChart;
+	private TextArea totalPixel = new TextArea();
 	
 	@FXML
-	NumberAxis intensity = new NumberAxis();
+	private TextArea totalArea = new TextArea();
 	
 	@FXML
-	TableView<Table> table;
+	private LineChart<Integer, Integer> lineChart;
 	
 	@FXML
-    TableColumn<Table, Integer> colPercentage;
+	private NumberAxis intensity = new NumberAxis();
+	
+	@FXML
+	private TableView<Table> table;
+	
+	@FXML
+	private TableColumn<Table, Integer> colPercentage;
 
     @FXML
-    TableColumn<Table, Integer> colPixel;
+    private TableColumn<Table, Integer> colPixel;
+    
+    @FXML
+    private ComboBox<String> comboCluster;
 	
 	private HashMap<Integer, Integer> graph;
 	//private Path fileToDeletePath = Paths.get("resource/saved.jpg");
 	
-	public class ControllerImage implements Initializable {
-		
-		@Override
-		public void initialize(URL location, ResourceBundle resources) {
-			
-		}
-	}
+	ObservableList<String> clusteringAlgorithm = FXCollections.observableArrayList("Mean Shift", "K-Means");
+	
 
+	@FXML
+	public void initialize() {
+		
+		// Set the list of clustering algorithm for Combo Box
+		comboCluster.setItems(clusteringAlgorithm);
+		
+		// Disable the Show Image button
+		btnShowImage.setStyle("-fx-background-color: #a8a8a8");
+		btnShowImage.setDisable(true);
+	}
+	
 	@FXML
 	private void onClickResults() throws IOException {	
 		new ClusteringAlgorithm();
@@ -105,23 +113,32 @@ public class ControllerResult {
 		totalPixel.setText(Integer.toString((int)newResult.getTotalPixel()));
 		totalArea.setText(String.format("%.2f", newResult.getTotalArea()));	
 		graph = newResult.getPixelCalculate().getHashMap_Data();
+		
+		// Show the result on graph
 		plotGraph();
+		
+		// Show the result on table
 		setTable();
+		
+		// Enable the Show Image button
+		btnShowImage.setStyle("-fx-background-color: #1ed7cb");
+		btnShowImage.setDisable(false);
 	}
-	
+		
+	// Show result on graph
 	@SuppressWarnings("rawtypes")
 	public void plotGraph(){
 		
-		//clear graph
+		// Clear graph
 		lineChart.getData().clear();
 		
-		//set x axis properties
+		// Set x axis properties
 		intensity.setAutoRanging(false);
 		intensity.setLowerBound(40);
 		intensity.setUpperBound(100);
 		intensity.setTickUnit(5);
 		
-		//add data to line chart
+		// Add data to line chart
 		XYChart.Series<Integer, Integer> series = new XYChart.Series<Integer, Integer>();
 		Set set = graph.entrySet();
 	    Iterator i = set.iterator();
@@ -133,26 +150,42 @@ public class ControllerResult {
 	    
 	    series.setName("Mean Shift Result");
 	    
-	    //display line chart
+	    // Display line chart
 		lineChart.getData().add(series);
 	}
 	
-	@FXML
+	// Show the result on table
 	@SuppressWarnings("rawtypes")
 	private void setTable(){
+		
 		colPercentage.setCellValueFactory(new PropertyValueFactory<Table, Integer>("percentage"));
 		colPixel.setCellValueFactory(new PropertyValueFactory<Table, Integer>("pixelCount"));
 		Set set = graph.entrySet();
 	    Iterator i = set.iterator();
 	    ObservableList<Table> data = FXCollections.observableArrayList();
 	    
+	    // Add data to the table
 	    while(i.hasNext()) {
 	        Map.Entry me = (Map.Entry)i.next();
 	        data.add(new Table((int)me.getKey(), (int)me.getValue()));
 	     }
+	    
+	    // Display table
 		table.setItems(data);
 	}
-
+	
+	@FXML
+	private void onClickPopup() throws IOException {	
+		
+		Stage stage; 
+	    Parent root;
+	    stage = (Stage)btnShowImage.getScene().getWindow();	    
+	    root = FXMLLoader.load(getClass().getResource("GUI_ShowImage.fxml"));
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
+	}
+	
 	@FXML
 	private void onClickBack() throws IOException {
 		
@@ -168,11 +201,12 @@ public class ControllerResult {
 	@FXML
 	private void onClickExit() throws IOException{
 		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
+		Files.deleteIfExists(Paths.get("resource/segmented.jpg"));
 		Platform.exit();
 		System.exit(0);
 	}
 	
-	//To display all MenuItems under File when it is clicked
+	// To display all MenuItems under File when it is clicked
 	@FXML
 	private void onClickFile() {
 		MenuItem itmExit = new MenuItem("Exit");
@@ -180,12 +214,13 @@ public class ControllerResult {
 		menuBar.getMenus().addAll(file);
 	}
 	
-	//To display MenuItems in Help option ('About' in this case)
+	// To display MenuItems in Help option ('About' in this case)
 	@FXML 
 	private void onClickHelp() {
 		MenuItem itmAbout = new MenuItem("About");
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
+		
 		// Display copyright information when 'Help' is clicked
 		Alert alert = new Alert(AlertType.INFORMATION);
 		DialogPane dialogPane = alert.getDialogPane();
@@ -199,7 +234,7 @@ public class ControllerResult {
     	alert.showAndWait();
 	}
 	
-	//When EXIT in File is clicked, the entire application is closed
+	// When Exit in File is clicked, the entire application is closed
 	@FXML
 	private void onClickMenuExit(){
 		Platform.exit();

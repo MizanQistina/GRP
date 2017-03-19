@@ -292,6 +292,7 @@ public class ControllerImage extends Main implements Initializable {
 	@FXML 
 	private void onClickExit() throws IOException {
 		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
+		Files.deleteIfExists(Paths.get("resource/segmented.jpg"));
 		Platform.exit();
 		System.exit(0);
 	}

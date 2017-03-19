@@ -68,14 +68,14 @@
       </LineChart>
       <Label layoutX="100.0" layoutY="485.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
       <Label layoutX="387.0" layoutY="496.0" prefHeight="21.0" prefWidth="101.0" text="Total Area (%):" />
-      <TextArea fx:id="totalPixel" layoutX="189.0" layoutY="485.0" prefHeight="30.0" prefWidth="130.0" editable="false">
+      <TextArea fx:id="totalPixel" editable="false" layoutX="189.0" layoutY="485.0" prefHeight="30.0" prefWidth="130.0">
          <tooltip>
             <Tooltip text="Show the total number of pink and magenta pixels" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></TextArea>
-      <TextArea fx:id="totalArea" layoutX="497.0" layoutY="483.0" prefHeight="30.0" prefWidth="130.0" editable="false">
+      <TextArea fx:id="totalArea" editable="false" layoutX="497.0" layoutY="483.0" prefHeight="30.0" prefWidth="130.0">
          <tooltip>
             <Tooltip text="Show the total area of pink and magenta pixel" />
          </tooltip>
@@ -101,7 +101,7 @@
             <Tooltip text="Select one clustering algorithm to run on the image" />
          </tooltip>
       </Label>
-      <Button fx:id="btnShowImage" layoutX="599.0" layoutY="570.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" text="Show Image">
+      <Button fx:id="btnShowImage" layoutX="599.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickPopup" prefHeight="50.0" prefWidth="160.0" text="Show Image">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
