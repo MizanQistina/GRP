@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -51,6 +52,8 @@ public class ControllerPopup implements Initializable {
 	@FXML
 	private ImageView iv = new ImageView();
 		
+	private int saved = 0;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -118,7 +121,30 @@ public class ControllerPopup implements Initializable {
 	
 	@FXML
 	private void onClickExit() throws IOException{
-		 	
+		
+		if(saved == 0){
+			
+			// Show confirmation dialog to save the image
+			Alert alert = new Alert(AlertType.CONFIRMATION, "Do you want to save the image?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+			DialogPane dialogPane = alert.getDialogPane();
+			dialogPane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			alert.showAndWait();
+
+			if (alert.getResult() == ButtonType.YES) {
+				onClickSave();
+			}else if(alert.getResult() == ButtonType.NO){
+				
+				// Close the application
+				exit();
+			}
+		}else{
+			
+			// Close the application
+			exit();
+		}
+	}
+	
+	private void exit() throws IOException{
 		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
 		Files.deleteIfExists(Paths.get("resource/segmented.jpg"));
 		Platform.exit();
@@ -142,6 +168,7 @@ public class ControllerPopup implements Initializable {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(iv.getImage(),
                     null), "jpg", file);
+                saved = 1;
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
