@@ -15,12 +15,12 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
    <children>
-      <Button fx:id="btnManualEnhance" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="187.0" text="Manual Enhance" textAlignment="CENTER">
+      <Button fx:id="btnManualEnhance" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickManualEnchance" prefHeight="50.0" prefWidth="187.0" text="Manual Enhance" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
          <tooltip>
-            <Tooltip text="Click this button to enhance image" />
+            <Tooltip text="Click this button to manually enhance image" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -90,12 +90,12 @@
              <Font name="Segoe UI Light" size="20.0" />
           </font>
       </Text>
-      <Button fx:id="btnEnhance" layoutX="457.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickEnchance" prefHeight="50.0" prefWidth="187.0" text="Auto-Enhance" textAlignment="CENTER">
+      <Button fx:id="btnAutoEnhance" layoutX="457.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickAutoEnchance" prefHeight="50.0" prefWidth="187.0" text="Auto-Enhance" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
          <tooltip>
-            <Tooltip text="Click this button to enhance image" />
+            <Tooltip text="Click this button to enhance image automatically" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="HAND" />

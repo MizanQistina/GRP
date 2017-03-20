@@ -47,7 +47,7 @@ public class ControllerImage extends Main implements Initializable {
 	private Slider brightSlider;
 	
 	@FXML
-	private Button btnEnhance = new Button();
+	private Button btnAutoEnhance = new Button();
 		
 	@FXML
 	private HBox Preview = new HBox();
@@ -103,6 +103,10 @@ public class ControllerImage extends Main implements Initializable {
 				PreProcessing.setAlpha((double)newValue.intValue());
 			}
 		});
+		
+		// Disable the Sharpness and Brightness slider
+		sharpSlider.setDisable(true);
+		brightSlider.setDisable(true);
 		
 		// Disable the Open menu item
 		itmOpen.setStyle("-fx-font-color: #a8a8a8");
@@ -259,7 +263,50 @@ public class ControllerImage extends Main implements Initializable {
 	}
 	
 	@FXML
-	private void onClickEnchance() throws IOException {
+	private void onClickAutoEnchance() throws IOException {
+		new LoadImage(Paths.get("resource/saved.jpg").toFile());
+		File file = new File("resource/saved.jpg");
+		FileReader fr = null;
+		try	
+		{
+			fr = new FileReader(file);
+			Image image = new Image(file.toURI().toString());
+		    ImageView iv = new ImageView(image);
+		    iv.setFitWidth(300);
+		    iv.setPreserveRatio(true);
+			iv.setSmooth(true);
+			iv.setCache(true);
+			iv.setX(120);
+			Preview.getChildren().clear();
+			Preview.getChildren().add(iv);
+		    
+		    
+		    if(!iv.isCache())
+		    {
+				btnNext.setStyle("-fx-background-color: #a8a8a8");
+				btnNext.setDisable(true);
+				System.out.println("File doesn't display");
+		    }
+		    fr.close();
+		}catch(FileNotFoundException e)
+		{
+			btnNext.setStyle("-fx-background-color: #a8a8a8");
+			btnNext.setDisable(true);
+			System.out.println("File doesn't exist");
+		}
+	}
+	
+	@FXML
+	private void onClickManualEnchance() throws IOException {
+		
+		// Disable the Auto Enhance button
+		btnAutoEnhance.setStyle("-fx-background-color: #a8a8a8");
+		btnAutoEnhance.setDisable(true);
+		
+		// Disable the Sharpness and Brightness slider
+		sharpSlider.setDisable(false);
+		brightSlider.setDisable(false);
+		
 		new LoadImage(Paths.get("resource/saved.jpg").toFile());
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
