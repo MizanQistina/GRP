@@ -2,7 +2,6 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -16,7 +15,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
    <children>
-      <Button fx:id="btnEnhance" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickEnchance" prefHeight="50.0" prefWidth="160.0" text="Auto-Enhance" textAlignment="CENTER">
+      <Button fx:id="btnManualEnhance" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="187.0" text="Manual Enhance" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
@@ -51,7 +50,7 @@
             <Tooltip text="Click Open to open file, Close to close file, Exit to exit this program, About for software information" />
          </tooltip>
       </MenuBar>
-      <Button fx:id="btnNext" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="160.0" text="Next &gt;&gt;" textAlignment="CENTER">
+      <Button fx:id="btnNext" layoutX="831.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="187.0" text="Next &gt;&gt;" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
@@ -67,34 +66,40 @@
          </font>
       </Text>
       <HBox fx:id="Preview" alignment="CENTER" layoutX="170.0" layoutY="65.0" prefHeight="430.0" prefWidth="730.0" />
-      <Text layoutX="430.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+      <Text layoutX="50.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpness" textAlignment="CENTER" wrappingWidth="240.6708984375">
           <font>
              <Font name="Segoe UI Light" size="20.0" />
           </font>
        </Text>
-       <Slider fx:id="sharpSlider" layoutX="410.0" layoutY="519.0" prefHeight="31.0" prefWidth="280.0">
+       <Slider fx:id="sharpSlider" layoutX="30.0" layoutY="480.0" prefHeight="31.0" prefWidth="280.0">
          <tooltip>
             <Tooltip text="Drag to the left to increase sharpness, right to lower sharpness" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Slider>
-       <Slider fx:id="brightSlider" layoutX="410.0" layoutY="559.0" prefHeight="31.0" prefWidth="280.0">
+       <Slider fx:id="brightSlider" layoutX="30.0" layoutY="520.0" prefHeight="31.0" prefWidth="280.0">
          <tooltip>
             <Tooltip text="Drag to the left to increase brightness, right to lower brightness" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Slider>
-       <Text layoutX="430.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+       <Text layoutX="50.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
           <font>
              <Font name="Segoe UI Light" size="20.0" />
           </font>
       </Text>
-      <CheckBox fx:id="checkManualEnhance" layoutX="445.0" layoutY="595.0" mnemonicParsing="false" text="Manual Enhance">
+      <Button fx:id="btnEnhance" layoutX="457.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickEnchance" prefHeight="50.0" prefWidth="187.0" text="Auto-Enhance" textAlignment="CENTER">
          <font>
-            <Font size="20.0" />
+            <Font name="Consolas Bold" size="20.0" />
          </font>
-      </CheckBox>
+         <tooltip>
+            <Tooltip text="Click this button to enhance image" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

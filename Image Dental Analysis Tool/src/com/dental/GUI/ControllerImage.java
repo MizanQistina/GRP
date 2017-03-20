@@ -104,13 +104,9 @@ public class ControllerImage extends Main implements Initializable {
 			}
 		});
 		
-		// Disable the Next button
-		btnNext.setStyle("-fx-background-color: #a8a8a8");
-		btnNext.setDisable(true);
-		
-		// Disable the Close menu item
-		itmClose.setStyle("-fx-font-color: #a8a8a8");
-		itmClose.setDisable(true);
+		// Disable the Open menu item
+		itmOpen.setStyle("-fx-font-color: #a8a8a8");
+		itmOpen.setDisable(true);
 		
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
@@ -127,11 +123,35 @@ public class ControllerImage extends Main implements Initializable {
 		    Preview.getChildren().add(iv);
 		    if(!iv.isCache())
 		    {
+		    	// Disable the Next button
+				btnNext.setStyle("-fx-background-color: #a8a8a8");
+				btnNext.setDisable(true);
+				
+				// Disable the Close menu item
+				itmClose.setStyle("-fx-font-color: #a8a8a8");
+				itmClose.setDisable(true);
+				
+				// Enable the Open menu item
+				itmOpen.setStyle("-fx-font-color: #1ed7cb");
+				itmOpen.setDisable(false);
+				
 				System.out.println("File doesn't display");
 		    }
 		    fr.close();
 		}catch(FileNotFoundException e)
 		{
+			// Disable the Next button
+			btnNext.setStyle("-fx-background-color: #a8a8a8");
+			btnNext.setDisable(true);
+			
+			// Disable the Close menu item
+			itmClose.setStyle("-fx-font-color: #a8a8a8");
+			itmClose.setDisable(true);
+			
+			// Enable the Open menu item
+			itmOpen.setStyle("-fx-font-color: #1ed7cb");
+			itmOpen.setDisable(false);
+			
 			System.out.println("File doesn't exist");
 		} catch (IOException e) {
 			e.printStackTrace();
