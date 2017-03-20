@@ -104,6 +104,14 @@ public class ControllerImage extends Main implements Initializable {
 			}
 		});
 		
+		// Disable the Next button
+		btnNext.setStyle("-fx-background-color: #a8a8a8");
+		btnNext.setDisable(true);
+		
+		// Disable the Close menu item
+		itmClose.setStyle("-fx-font-color: #a8a8a8");
+		itmClose.setDisable(true);
+		
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
 		try	
@@ -119,15 +127,11 @@ public class ControllerImage extends Main implements Initializable {
 		    Preview.getChildren().add(iv);
 		    if(!iv.isCache())
 		    {
-				btnNext.setStyle("-fx-background-color: #a8a8a8");
-				btnNext.setDisable(true);
 				System.out.println("File doesn't display");
 		    }
 		    fr.close();
 		}catch(FileNotFoundException e)
 		{
-			btnNext.setStyle("-fx-background-color: #a8a8a8");
-			btnNext.setDisable(true);
 			System.out.println("File doesn't exist");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -157,6 +161,15 @@ public class ControllerImage extends Main implements Initializable {
 			    
 				btnNext.setStyle("-fx-background-color: #1ed7cb");
 				btnNext.setDisable(false);
+				
+				// Enable the Close menu item
+				itmClose.setStyle("-fx-font-color: #1ed7cb");
+				itmClose.setDisable(false);
+				
+				// Disable the Open menu item
+				itmOpen.setStyle("-fx-font-color: #a8a8a8");
+				itmOpen.setDisable(true);
+				
 			} catch (IOException e) {
 				btnNext.setStyle("-fx-background-color: #a8a8a8");
 				btnNext.setDisable(true);
@@ -208,6 +221,19 @@ public class ControllerImage extends Main implements Initializable {
 		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
 		imageView.setImage(null);
 		Preview.getChildren().clear();
+		
+		// Enable the Open menu item
+		itmOpen.setStyle("-fx-font-color: #1ed7cb");
+		itmOpen.setDisable(false);
+		
+		// Disable the Close menu item
+		itmClose.setStyle("-fx-font-color: #a8a8a8");
+		itmClose.setDisable(true);
+		
+		// Disable the Next button
+		btnNext.setStyle("-fx-background-color: #a8a8a8");
+		btnNext.setDisable(true);
+		
 		PreProcessing.setSigmaX(101);
 		PreProcessing.setAlpha(1);
 	}
