@@ -9,7 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +28,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ControllerPopup implements Initializable {
@@ -43,6 +47,9 @@ public class ControllerPopup implements Initializable {
 	
 	@FXML
 	private Button btnBack = new Button();
+	
+	@FXML
+	private ImageView iv = new ImageView();
 		
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -53,7 +60,7 @@ public class ControllerPopup implements Initializable {
 		{
 			fr = new FileReader(file);
 			Image image = new Image(file.toURI().toString());
-		    ImageView iv = new ImageView(image);
+		    iv = new ImageView(image);
 		    iv.setFitWidth(300);
 		    iv.setPreserveRatio(true);
 			iv.setSmooth(true);
@@ -83,6 +90,7 @@ public class ControllerPopup implements Initializable {
 		MenuItem itmAbout = new MenuItem("About");
 		help.getItems().addAll(itmAbout);
 		menuBar.getMenus().addAll(help);
+		
 		// Display copyright information when 'Help' is clicked
 		Alert alert = new Alert(AlertType.INFORMATION);
 		DialogPane dialogPane = alert.getDialogPane();
@@ -110,10 +118,34 @@ public class ControllerPopup implements Initializable {
 	
 	@FXML
 	private void onClickExit() throws IOException{
+		 	
 		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
 		Files.deleteIfExists(Paths.get("resource/segmented.jpg"));
 		Platform.exit();
 		System.exit(0);
+	}
+	
+	// Save the segmented file
+	@FXML
+	private void onClickSave() {
+		FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Image");
+        
+        // Set the type of saved file
+        FileChooser.ExtensionFilter extFilter = 
+                new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.jpg");
+        fileChooser.getExtensionFilters().add(extFilter);
+        
+        // Show the Save Image file chooser
+        File file = fileChooser.showSaveDialog(new Stage());
+        if (file != null) {
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(iv.getImage(),
+                    null), "jpg", file);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 	}
 
 }
