@@ -41,3 +41,20 @@ Button{
   -fx-text-fill: #1d1d1d;
 }
   
+  
+.toggle-button {
+    -fx-background-color:
+        linear-gradient(#1ED7CB, #92F6F0),
+        radial-gradient(center 50% 10%, radius 200%, #1ED7CB 45%, #5EDCD4 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #FFFFFF;
+}
+.toggle-button:selected {
+    -fx-background-color: #000000;
+  	-fx-text-fill: #FFFFFF;
+}
+.toggle-button:hover {
+    -fx-background-color: #000000;
+}

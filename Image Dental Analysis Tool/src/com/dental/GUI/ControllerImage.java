@@ -26,6 +26,7 @@ import javafx.scene.Scene;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
@@ -54,6 +55,9 @@ public class ControllerImage extends Main implements Initializable {
 	
 	@FXML
 	private Button btnNext = new Button();
+	
+	@FXML
+    private ToggleButton toggleManualEnhance;
 	
 	@FXML
 	private MenuBar menuBar = new MenuBar();
@@ -122,6 +126,12 @@ public class ControllerImage extends Main implements Initializable {
 		
 		// Disable the Open menu item
 		itmOpen.setDisable(true);
+		
+		// Disable the Auto Enhance button
+		btnAutoEnhance.setDisable(true);
+		
+		// Disable the Manual Enhance toggle button
+		toggleManualEnhance.setDisable(true);
 		
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
@@ -200,6 +210,12 @@ public class ControllerImage extends Main implements Initializable {
 				
 				// Disable the Open menu item
 				itmOpen.setDisable(true);
+				
+				// Enable the Auto Enhance button
+				btnAutoEnhance.setDisable(false);
+				
+				// Enable the Manual Enhance toggle button
+				toggleManualEnhance.setDisable(false);
 				
 			} catch (IOException e) {
 				btnNext.setDisable(true);
@@ -300,13 +316,6 @@ public class ControllerImage extends Main implements Initializable {
 	@FXML
 	private void onClickManualEnchance() throws IOException {
 		
-		// Disable the Auto Enhance button
-		btnAutoEnhance.setDisable(true);
-		
-		// Enable the Sharpness and Brightness slider
-		sharpSlider.setDisable(false);
-		brightSlider.setDisable(false);
-		
 		new LoadImage(Paths.get("resource/original.jpg").toFile());
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
@@ -335,6 +344,28 @@ public class ControllerImage extends Main implements Initializable {
 			btnNext.setDisable(true);
 			System.out.println("File doesn't exist");
 		}
+	}
+	
+	@FXML
+	private void onClickToggle() throws IOException {
+		
+		if(toggleManualEnhance.isSelected()){
+			// Disable the Auto Enhance button
+			btnAutoEnhance.setDisable(true);
+			
+			// Enable the Sharpness and Brightness slider
+			sharpSlider.setDisable(false);
+			brightSlider.setDisable(false);
+		}
+		else{
+			// Enable the Auto Enhance button
+			btnAutoEnhance.setDisable(false);
+			
+			// Disable the Sharpness and Brightness slider
+			sharpSlider.setDisable(true);
+			brightSlider.setDisable(true);
+		}
+		
 	}
 	
 	@FXML

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,16 +16,6 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
    <children>
-      <Button fx:id="btnManualEnhance" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickManualEnchance" prefHeight="50.0" prefWidth="187.0" text="Manual Enhance" textAlignment="CENTER">
-         <font>
-            <Font name="Consolas Bold" size="20.0" />
-         </font>
-         <tooltip>
-            <Tooltip text="Click this button to manually enhance image" />
-         </tooltip>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
       <MenuBar prefHeight="44.0" prefWidth="1065.0">
         <menus>
           <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
@@ -66,26 +57,26 @@
          </font>
       </Text>
       <HBox fx:id="Preview" alignment="CENTER" layoutX="170.0" layoutY="65.0" prefHeight="430.0" prefWidth="730.0" />
-      <Text layoutX="50.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+      <Text layoutX="25.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpness" textAlignment="CENTER" wrappingWidth="240.6708984375">
           <font>
              <Font name="Segoe UI Light" size="20.0" />
           </font>
        </Text>
-       <Slider fx:id="sharpSlider" layoutX="30.0" layoutY="480.0" prefHeight="31.0" prefWidth="280.0">
+       <Slider fx:id="sharpSlider" layoutX="19.0" layoutY="479.0" prefHeight="31.0" prefWidth="250.0">
          <tooltip>
             <Tooltip text="Drag to the left to increase sharpness, right to lower sharpness" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Slider>
-       <Slider fx:id="brightSlider" layoutX="30.0" layoutY="520.0" prefHeight="31.0" prefWidth="280.0">
+       <Slider fx:id="brightSlider" layoutX="19.0" layoutY="522.0" prefHeight="31.0" prefWidth="250.0">
          <tooltip>
             <Tooltip text="Drag to the left to increase brightness, right to lower brightness" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Slider>
-       <Text layoutX="50.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+       <Text layoutX="25.0" layoutY="526.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
           <font>
              <Font name="Segoe UI Light" size="20.0" />
           </font>
@@ -101,5 +92,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ToggleButton fx:id="toggleManualEnhance" layoutX="50.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickToggle" prefHeight="50.0" prefWidth="187.0" text="Manual Enhance">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click to activate the sliders for manual enhance" />
+         </tooltip>
+      </ToggleButton>
    </children>
 </AnchorPane>
