@@ -8,19 +8,28 @@ public class ClusteringAlgorithm {
 	
 	private Mat preprocessImage;
 	private MeanShift meanShift;
-	//private KMeans kMeans;
+	private KMeans kMeans;
 	
-	public ClusteringAlgorithm(){
+	public ClusteringAlgorithm(String algorithm){
 		
 		String address = "resource/saved.jpg";
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		preprocessImage = Highgui.imread(address,Highgui.CV_LOAD_IMAGE_COLOR);
 		
-		meanShift = new MeanShift(preprocessImage);
-		//kMeans = new KMeans(preprocessImage);
-		
-		// Check project file to see the clustered image
-		Highgui.imwrite("resource/clustered.jpg",meanShift.meanShift());
-		// Highgui.imwrite("resource/clustered.jpg",kMeans.kMeans());	
+		if(algorithm == "Mean Shift"){
+			
+			// Run Mean Shift on the image
+			meanShift = new MeanShift(preprocessImage);
+			
+			// Create the clustered image
+			Highgui.imwrite("resource/clustered.jpg",meanShift.meanShift());
+		}else if(algorithm == "K-Means"){
+			
+			// Run K-Means on the image
+			kMeans = new KMeans(preprocessImage);
+			
+			// Create the clustered image
+			Highgui.imwrite("resource/clustered.jpg",kMeans.kMeans());
+		}	
 	}
 }
