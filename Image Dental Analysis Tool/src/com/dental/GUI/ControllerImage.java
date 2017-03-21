@@ -109,7 +109,6 @@ public class ControllerImage extends Main implements Initializable {
 		brightSlider.setDisable(true);
 		
 		// Disable the Open menu item
-		itmOpen.setStyle("-fx-font-color: #a8a8a8");
 		itmOpen.setDisable(true);
 		
 		File file = new File("resource/saved.jpg");
@@ -128,15 +127,12 @@ public class ControllerImage extends Main implements Initializable {
 		    if(!iv.isCache())
 		    {
 		    	// Disable the Next button
-				btnNext.setStyle("-fx-background-color: #a8a8a8");
 				btnNext.setDisable(true);
 				
 				// Disable the Close menu item
-				itmClose.setStyle("-fx-font-color: #a8a8a8");
 				itmClose.setDisable(true);
 				
 				// Enable the Open menu item
-				itmOpen.setStyle("-fx-font-color: #1ed7cb");
 				itmOpen.setDisable(false);
 				
 				System.out.println("File doesn't display");
@@ -145,15 +141,12 @@ public class ControllerImage extends Main implements Initializable {
 		}catch(FileNotFoundException e)
 		{
 			// Disable the Next button
-			btnNext.setStyle("-fx-background-color: #a8a8a8");
 			btnNext.setDisable(true);
 			
 			// Disable the Close menu item
-			itmClose.setStyle("-fx-font-color: #a8a8a8");
 			itmClose.setDisable(true);
 			
 			// Enable the Open menu item
-			itmOpen.setStyle("-fx-font-color: #1ed7cb");
 			itmOpen.setDisable(false);
 			
 			System.out.println("File doesn't exist");
@@ -183,19 +176,15 @@ public class ControllerImage extends Main implements Initializable {
 			    File outputfile = new File("resource/saved.jpg");
 			    ImageIO.write(bi, "jpg", outputfile);
 			    
-				btnNext.setStyle("-fx-background-color: #1ed7cb");
 				btnNext.setDisable(false);
 				
 				// Enable the Close menu item
-				itmClose.setStyle("-fx-font-color: #1ed7cb");
 				itmClose.setDisable(false);
 				
 				// Disable the Open menu item
-				itmOpen.setStyle("-fx-font-color: #a8a8a8");
 				itmOpen.setDisable(true);
 				
 			} catch (IOException e) {
-				btnNext.setStyle("-fx-background-color: #a8a8a8");
 				btnNext.setDisable(true);
 			}
 		    
@@ -247,15 +236,12 @@ public class ControllerImage extends Main implements Initializable {
 		Preview.getChildren().clear();
 		
 		// Enable the Open menu item
-		itmOpen.setStyle("-fx-font-color: #1ed7cb");
 		itmOpen.setDisable(false);
 		
 		// Disable the Close menu item
-		itmClose.setStyle("-fx-font-color: #a8a8a8");
 		itmClose.setDisable(true);
 		
 		// Disable the Next button
-		btnNext.setStyle("-fx-background-color: #a8a8a8");
 		btnNext.setDisable(true);
 		
 		PreProcessing.setSigmaX(101);
@@ -283,14 +269,12 @@ public class ControllerImage extends Main implements Initializable {
 		    
 		    if(!iv.isCache())
 		    {
-				btnNext.setStyle("-fx-background-color: #a8a8a8");
 				btnNext.setDisable(true);
 				System.out.println("File doesn't display");
 		    }
 		    fr.close();
 		}catch(FileNotFoundException e)
 		{
-			btnNext.setStyle("-fx-background-color: #a8a8a8");
 			btnNext.setDisable(true);
 			System.out.println("File doesn't exist");
 		}
@@ -300,7 +284,6 @@ public class ControllerImage extends Main implements Initializable {
 	private void onClickManualEnchance() throws IOException {
 		
 		// Disable the Auto Enhance button
-		btnAutoEnhance.setStyle("-fx-background-color: #a8a8a8");
 		btnAutoEnhance.setDisable(true);
 		
 		// Disable the Sharpness and Brightness slider
@@ -326,14 +309,12 @@ public class ControllerImage extends Main implements Initializable {
 		    
 		    if(!iv.isCache())
 		    {
-				btnNext.setStyle("-fx-background-color: #a8a8a8");
 				btnNext.setDisable(true);
 				System.out.println("File doesn't display");
 		    }
 		    fr.close();
 		}catch(FileNotFoundException e)
 		{
-			btnNext.setStyle("-fx-background-color: #a8a8a8");
 			btnNext.setDisable(true);
 			System.out.println("File doesn't exist");
 		}

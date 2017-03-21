@@ -90,25 +90,36 @@ public class ControllerResult {
     private ComboBox<String> comboCluster;
 	
 	private HashMap<Integer, Integer> graph;
-	//private Path fileToDeletePath = Paths.get("resource/saved.jpg");
 	
 	ObservableList<String> clusteringAlgorithm = FXCollections.observableArrayList("Mean Shift", "K-Means");
 	
 
 	@FXML
-	public void initialize() {
+	private void initialize() {
 		
 		// Set the list of clustering algorithm for Combo Box
 		comboCluster.setItems(clusteringAlgorithm);
 		
 		// Disable the Show Image button
-		btnShowImage.setStyle("-fx-background-color: #a8a8a8");
 		btnShowImage.setDisable(true);
+		
+		// Disable the Show Result button
+		btnResult.setDisable(true);
+	}
+	
+	@FXML
+	private void onClickCombo(){
+		
+		// Check the clustering algorithm is chosen or not
+		if(comboCluster.getValue() != null){
+			// Enable the Show Result button
+			btnResult.setDisable(false);
+		}
 	}
 	
 	@FXML
 	private void onClickResults() throws IOException {	
-		new ClusteringAlgorithm();
+		new ClusteringAlgorithm(comboCluster.getValue());
 		Result newResult = new Result();
 		totalPixel.setText(Integer.toString((int)newResult.getTotalPixel()));
 		totalArea.setText(String.format("%.2f", newResult.getTotalArea()));	
@@ -121,7 +132,6 @@ public class ControllerResult {
 		setTable();
 		
 		// Enable the Show Image button
-		btnShowImage.setStyle("-fx-background-color: #1ed7cb");
 		btnShowImage.setDisable(false);
 	}
 		
