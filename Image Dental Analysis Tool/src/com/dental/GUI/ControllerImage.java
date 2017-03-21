@@ -85,14 +85,21 @@ public class ControllerImage extends Main implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		sharpSlider.setMin(1);
-		brightSlider.setMin(1);
+		sharpSlider.setMin(50);
+		sharpSlider.setMax(100);
+		brightSlider.setMin(-50);
+		brightSlider.setMax(50);
 		
 		// Listen for Sharpness slider value changes
 		sharpSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				PreProcessing.setSigmaX(newValue.intValue());
+				try {
+					onClickManualEnchance();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		
@@ -100,7 +107,12 @@ public class ControllerImage extends Main implements Initializable {
 		brightSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable,Number oldValue, Number newValue) {
-				PreProcessing.setAlpha((double)newValue.intValue());
+				PreProcessing.setBeta((double)newValue.intValue());
+				try {
+					onClickManualEnchance();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		
@@ -180,8 +192,12 @@ public class ControllerImage extends Main implements Initializable {
 			try {
 			    // retrieve image
 			    BufferedImage bi = bimg;
+			    
 			    File outputfile = new File("resource/saved.jpg");
 			    ImageIO.write(bi, "jpg", outputfile);
+			    
+			    File outputfile_Original = new File("resource/original.jpg");
+			    ImageIO.write(bi, "jpg", outputfile_Original);
 			    
 				btnNext.setStyle("-fx-background-color: #1ed7cb");
 				btnNext.setDisable(false);
@@ -259,7 +275,7 @@ public class ControllerImage extends Main implements Initializable {
 		btnNext.setDisable(true);
 		
 		PreProcessing.setSigmaX(101);
-		PreProcessing.setAlpha(1);
+		PreProcessing.setBeta(-50);
 	}
 	
 	@FXML
@@ -303,11 +319,11 @@ public class ControllerImage extends Main implements Initializable {
 		btnAutoEnhance.setStyle("-fx-background-color: #a8a8a8");
 		btnAutoEnhance.setDisable(true);
 		
-		// Disable the Sharpness and Brightness slider
+		// Enable the Sharpness and Brightness slider
 		sharpSlider.setDisable(false);
 		brightSlider.setDisable(false);
 		
-		new LoadImage(Paths.get("resource/saved.jpg").toFile());
+		new LoadImage(Paths.get("resource/original.jpg").toFile());
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
 		try	

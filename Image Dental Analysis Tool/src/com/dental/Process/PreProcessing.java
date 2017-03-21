@@ -42,7 +42,7 @@ public class PreProcessing {
 	public static void setSigmaX(int sigmaX) {
 		PreProcessing.sigmaX = sigmaX;
 	}
-	public static void setAlpha(double alpha) {
-		PreProcessing.alpha = alpha;
+	public static void setBeta(double beta) {
+		PreProcessing.beta = beta;
 	}
 }

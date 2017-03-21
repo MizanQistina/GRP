@@ -152,6 +152,7 @@ public class ControllerResult {
 	    
 	    // Display line chart
 		lineChart.getData().add(series);
+		
 	}
 	
 	// Show the result on table

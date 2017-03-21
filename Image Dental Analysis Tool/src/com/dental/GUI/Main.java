@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.dental.Process.PreProcessing;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -29,6 +31,8 @@ public class Main extends Application {
 				{	
 					try {
 						Files.deleteIfExists(Paths.get("resource/saved.jpg"));
+						PreProcessing.setSigmaX(101);
+						PreProcessing.setBeta(-50);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
