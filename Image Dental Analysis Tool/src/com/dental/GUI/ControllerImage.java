@@ -235,12 +235,27 @@ public class ControllerImage extends Main implements Initializable {
 		    // Check if the image size is acceptable
 		    if(width>1366&&height>768||width>1366||height>768) {
 		    	
+		    	// Disable the Close menu item
+				itmClose.setDisable(true);
+				
+				// Enable the Open menu item
+				itmOpen.setDisable(false);
+				
+				//Disable next button
+				btnNext.setDisable(true);
+				
+				// Disable the Auto Enhance button
+				btnAutoEnhance.setDisable(true);
+				
+				// Disable the Manual Enhance toggle button
+				toggleManualEnhance.setDisable(true);
+		    	
 		    	// Alert box appears when if statement is true 
 		    	Alert alert = new Alert(AlertType.ERROR);   		
 		    	alert.setTitle("Error");
 		    	alert.setHeaderText("Uploaded Failed");
 		    	alert.setContentText("Upload image less than 1.1 mbs");
-		    	alert.showAndWait();
+		    	alert.showAndWait();		    	
 		    }
 		    	
 		    // If file is of appropriate dimensions run the following code
