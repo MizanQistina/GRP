@@ -57,26 +57,26 @@
          </font>
       </Text>
       <HBox fx:id="Preview" alignment="CENTER" layoutX="170.0" layoutY="65.0" prefHeight="430.0" prefWidth="730.0" />
-      <Text layoutX="25.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+      <Text layoutX="229.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpness" textAlignment="CENTER" wrappingWidth="240.6708984375">
           <font>
              <Font name="Segoe UI Light" size="20.0" />
           </font>
        </Text>
-       <Slider fx:id="sharpSlider" layoutX="19.0" layoutY="479.0" prefHeight="31.0" prefWidth="250.0">
+       <Slider fx:id="sharpSlider" layoutX="259.0" layoutY="562.0" prefHeight="31.0" prefWidth="180.0">
          <tooltip>
             <Tooltip text="Drag to the left to increase sharpness, right to lower sharpness" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Slider>
-       <Slider fx:id="brightSlider" layoutX="19.0" layoutY="522.0" prefHeight="31.0" prefWidth="250.0">
+       <Slider fx:id="brightSlider" layoutX="259.0" layoutY="605.0" prefHeight="31.0" prefWidth="180.0">
          <tooltip>
             <Tooltip text="Drag to the left to increase brightness, right to lower brightness" />
          </tooltip>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Slider>
-       <Text layoutX="25.0" layoutY="526.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+       <Text layoutX="229.0" layoutY="607.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
           <font>
              <Font name="Segoe UI Light" size="20.0" />
           </font>
