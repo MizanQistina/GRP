@@ -13,7 +13,7 @@ public class PixelCalculation {
 	private int totalPixels = 0;
 	private float HSV[] = new float[3];
 	private BufferedImage address;
-	private ArrayList<Integer> brightness = new ArrayList<Integer>();
+	private ArrayList<Integer> brightness;
 	private HashMap<Integer, Integer> graph = new HashMap<Integer, Integer>();
 	private int brightnessCount = 0;
 
@@ -22,6 +22,7 @@ public class PixelCalculation {
 		this.width = width;
 		this.height = height;
 		this.address = address;
+		brightness = new ArrayList<Integer>();
 	}
 
 	// Calculates the total of pink and magenta pixel
@@ -36,7 +37,8 @@ public class PixelCalculation {
 	            }
 	    }
 	    Collections.sort(brightness);
-	    brightnessCount();	    
+	    brightnessCount();	
+	    brightness.clear();
 	    return totalPixels;
 	}
 	
@@ -63,13 +65,16 @@ public class PixelCalculation {
 		if(( a >= 75 && a < 97) && ( b >= 40 && b < 101  ) && (c >= 40 && c < 101)) {
         	flag = true;
         	totalPixels++;
-        	brightness.add((int) c);        	
+        	brightness.add((int) c);
+        	
         }
 		
 		// Converts the non-pink and non-magenta pixel to white pixel
 		if(flag == false){
 			address.setRGB(x, y, white.getRGB());
         }
+		
+		
 	}
 	
 	private void brightnessCount(){

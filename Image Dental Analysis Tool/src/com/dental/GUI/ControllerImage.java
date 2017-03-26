@@ -127,12 +127,6 @@ public class ControllerImage extends Main implements Initializable {
 		// Disable the Open menu item
 		itmOpen.setDisable(true);
 		
-		// Disable the Auto Enhance button
-		btnAutoEnhance.setDisable(true);
-		
-		// Disable the Manual Enhance toggle button
-		toggleManualEnhance.setDisable(true);
-		
 		File file = new File("resource/saved.jpg");
 		FileReader fr = null;
 		try	
@@ -157,6 +151,12 @@ public class ControllerImage extends Main implements Initializable {
 				// Enable the Open menu item
 				itmOpen.setDisable(false);
 				
+				// Disable the Auto Enhance button
+				btnAutoEnhance.setDisable(true);
+				
+				// Disable the Manual Enhance toggle button
+				toggleManualEnhance.setDisable(true);
+				
 				System.out.println("File doesn't display");
 		    }
 		    fr.close();
@@ -170,6 +170,12 @@ public class ControllerImage extends Main implements Initializable {
 			
 			// Enable the Open menu item
 			itmOpen.setDisable(false);
+			
+			// Disable the Auto Enhance button
+			btnAutoEnhance.setDisable(true);
+			
+			// Disable the Manual Enhance toggle button
+			toggleManualEnhance.setDisable(true);
 			
 			System.out.println("File doesn't exist");
 		} catch (IOException e) {
@@ -276,6 +282,12 @@ public class ControllerImage extends Main implements Initializable {
 		
 		// Disable the Next button
 		btnNext.setDisable(true);
+		
+		// Disable the Auto Enhance button
+		btnAutoEnhance.setDisable(true);
+		
+		// Disable the Manual Enhance toggle button
+		toggleManualEnhance.setDisable(true);
 		
 		PreProcessing.setSigmaX(101);
 		PreProcessing.setBeta(-50);

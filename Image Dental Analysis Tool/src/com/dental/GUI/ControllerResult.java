@@ -13,6 +13,9 @@ import com.dental.Result.Result;
 import com.dental.Result.Table;
 
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -91,14 +94,18 @@ public class ControllerResult {
 	
 	private HashMap<Integer, Integer> graph;
 	
-	ObservableList<String> clusteringAlgorithm = FXCollections.observableArrayList("Mean Shift", "K-Means");
+	private final IntegerProperty state = new SimpleIntegerProperty();
 	
-
+	ObservableList<String> clusteringAlgorithm = FXCollections.observableArrayList("K-Means", "Mean Shift");
+	
 	@FXML
 	private void initialize() {
 		
 		// Set the list of clustering algorithm for Combo Box
 		comboCluster.setItems(clusteringAlgorithm);
+		
+		// Set an integer value to the clustering algorithm
+		state.bind(Bindings.when(comboCluster.valueProperty().isEqualTo("K-Means")).then(1).otherwise(2));
 		
 		// Disable the Show Image button
 		btnShowImage.setDisable(true);
@@ -119,7 +126,8 @@ public class ControllerResult {
 	
 	@FXML
 	private void onClickResults() throws IOException {	
-		new ClusteringAlgorithm(comboCluster.getValue());
+		new ClusteringAlgorithm(state.get());
+		System.out.println(state.get());
 		Result newResult = new Result();
 		totalPixel.setText(Integer.toString((int)newResult.getTotalPixel()));
 		totalArea.setText(String.format("%.2f", newResult.getTotalArea()));	
@@ -158,7 +166,7 @@ public class ControllerResult {
 	        series.getData().add(new XYChart.Data<Integer, Integer>((int)me.getKey(),(int)me.getValue()));
 	    }
 	    
-	    series.setName("Mean Shift Result");
+	    series.setName(comboCluster.getValue());
 	    
 	    // Display line chart
 		lineChart.getData().add(series);

@@ -38,7 +38,7 @@
             <Tooltip text="Click About for software information" />
          </tooltip>
       </MenuBar>
-      <Button fx:id="btnBack" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="160.0" text="&lt;&lt; Back">
+      <Button fx:id="btnBack" layoutX="50.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="187.0" text="&lt;&lt; Back">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
@@ -48,7 +48,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnResult" layoutX="327.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickResults" prefHeight="50.0" prefWidth="160.0" text="Show Results" textAlignment="CENTER">
+      <Button fx:id="btnResult" layoutX="301.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickResults" prefHeight="50.0" prefWidth="187.0" text="Show Results" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
@@ -88,7 +88,7 @@
           <TableColumn fx:id="colPixel" prefWidth="133.0" text="Pixels Count" />
         </columns>
       </TableView>
-      <Button fx:id="btnExit" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickExit" prefHeight="50.0" prefWidth="160.0" text="Exit">
+      <Button fx:id="btnExit" layoutX="831.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickExit" prefHeight="50.0" prefWidth="187.0" text="Exit">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
@@ -101,7 +101,7 @@
             <Tooltip text="Select one clustering algorithm to run on the image" />
          </tooltip>
       </Label>
-      <Button fx:id="btnShowImage" layoutX="599.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickPopup" prefHeight="50.0" prefWidth="160.0" text="Show Image">
+      <Button fx:id="btnShowImage" layoutX="576.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickPopup" prefHeight="50.0" prefWidth="187.0" text="Show Image">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>

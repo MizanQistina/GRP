@@ -8,10 +8,10 @@ import javax.imageio.ImageIO;
 
 public class Result {
 
-	private PixelCalculation pixelCalculate;
-	private Area area;
-	private float totalPixel;
-	private float totalArea;	
+	private PixelCalculation pixelCalculate = null;
+	private Area area = null;
+	private float totalPixel = 0;
+	private float totalArea = 0;	
 
 	public Result() throws IOException {
 		
@@ -21,7 +21,6 @@ public class Result {
 		address = ImageIO.read(new File("resource/clustered.jpg"));
 		width = address.getWidth();
 		height = address.getHeight();
-	    new BufferedImage(width,height,address.getType());
 	    
 	    pixelCalculate = new PixelCalculation(width, height, address);
 	    totalPixel = pixelCalculate.pixelCalculation();
