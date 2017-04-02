@@ -91,13 +91,16 @@ public class ControllerImage extends Main implements Initializable {
 		
 		sharpSlider.setMin(50);
 		sharpSlider.setMax(100);
+		
 		brightSlider.setMin(-50);
 		brightSlider.setMax(50);
+		
 		
 		// Listen for Sharpness slider value changes
 		sharpSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				sharpSlider.setCache(true);
 				PreProcessing.setSigmaX(newValue.intValue());
 				try {
 					onClickManualEnchance();
@@ -111,6 +114,7 @@ public class ControllerImage extends Main implements Initializable {
 		brightSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable,Number oldValue, Number newValue) {
+				brightSlider.setCache(true);
 				PreProcessing.setBeta((double)newValue.intValue());
 				try {
 					onClickManualEnchance();
@@ -156,8 +160,6 @@ public class ControllerImage extends Main implements Initializable {
 				
 				// Disable the Manual Enhance toggle button
 				toggleManualEnhance.setDisable(true);
-				
-				System.out.println("File doesn't display");
 		    }
 		    fr.close();
 		}catch(FileNotFoundException e)
@@ -177,7 +179,6 @@ public class ControllerImage extends Main implements Initializable {
 			// Disable the Manual Enhance toggle button
 			toggleManualEnhance.setDisable(true);
 			
-			System.out.println("File doesn't exist");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

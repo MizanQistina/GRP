@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerPopup">
+<AnchorPane prefHeight="619.0" prefWidth="991.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerPopup">
    <children>
-      <Button fx:id="btnBack" layoutX="60.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="160.0" text="&lt;&lt; Back" textAlignment="CENTER">
+      <Button fx:id="btnBack" layoutX="455.0" layoutY="547.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="50.0" prefWidth="160.0" text="&lt;&lt; Back" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
@@ -23,7 +23,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <MenuBar prefHeight="44.0" prefWidth="1065.0">
+      <MenuBar prefHeight="44.0" prefWidth="1089.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
             <items>
@@ -46,16 +46,6 @@
             <Tooltip text="Click Save to save image, About for software information" />
          </tooltip>
       </MenuBar>
-      <Button fx:id="btnExit" layoutX="860.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickExit" prefHeight="50.0" prefWidth="160.0" text="Exit" textAlignment="CENTER">
-         <font>
-            <Font name="Consolas Bold" size="20.0" />
-         </font>
-         <tooltip>
-            <Tooltip text="Click this button to close the program" />
-         </tooltip>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
       <HBox fx:id="Preview" alignment="CENTER" layoutX="170.0" layoutY="65.0" prefHeight="430.0" prefWidth="730.0" />
    </children>
 </AnchorPane>

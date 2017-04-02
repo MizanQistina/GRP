@@ -16,6 +16,7 @@ public class PixelCalculation {
 	private ArrayList<Integer> brightness;
 	private HashMap<Integer, Integer> graph = new HashMap<Integer, Integer>();
 	private int brightnessCount = 0;
+	private boolean flag_NoPink = false;
 
 	// Constructor
 	public PixelCalculation(int width, int height, BufferedImage address) {
@@ -78,22 +79,32 @@ public class PixelCalculation {
 	}
 	
 	private void brightnessCount(){
-		int pivot = brightness.get(0);
-		graph.put(pivot,0);
-		for(int i=0; i<totalPixels; i++){
+		if(!brightness.isEmpty()){
+			int pivot = brightness.get(0);
+			graph.put(pivot,0);
 			
-			if(pivot == brightness.get(i)){
-				brightnessCount++;
-			}
-			else{
+			for(int i=0; i<totalPixels; i++){
+				
+				if(pivot == brightness.get(i)){
+					brightnessCount++;
+				}
+				else{
+					graph.put(pivot,brightnessCount);
+					pivot = brightness.get(i);
+					brightnessCount = 1;
+				}
 				graph.put(pivot,brightnessCount);
-				pivot = brightness.get(i);
-				brightnessCount = 1;
 			}
-			graph.put(pivot,brightnessCount);
+		}
+		else{
+			flag_NoPink = true;
 		}
 	}
 	
+	public boolean isFlag_NoPink() {
+		return flag_NoPink;
+	}
+
 	public HashMap<Integer,Integer> getHashMap_Data(){
 		return graph;
 	}

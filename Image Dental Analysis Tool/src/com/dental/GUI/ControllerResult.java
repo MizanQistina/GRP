@@ -38,6 +38,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ControllerResult {
 	
@@ -100,7 +101,6 @@ public class ControllerResult {
 	
 	@FXML
 	private void initialize() {
-		
 		// Set the list of clustering algorithm for Combo Box
 		comboCluster.setItems(clusteringAlgorithm);
 		
@@ -127,20 +127,29 @@ public class ControllerResult {
 	@FXML
 	private void onClickResults() throws IOException {	
 		new ClusteringAlgorithm(state.get());
-		System.out.println(state.get());
 		Result newResult = new Result();
-		totalPixel.setText(Integer.toString((int)newResult.getTotalPixel()));
-		totalArea.setText(String.format("%.2f", newResult.getTotalArea()));	
-		graph = newResult.getPixelCalculate().getHashMap_Data();
-		
-		// Show the result on graph
-		plotGraph();
-		
-		// Show the result on table
-		setTable();
-		
-		// Enable the Show Image button
-		btnShowImage.setDisable(false);
+		if(newResult.getPixelCalculate().isFlag_NoPink() == false){
+			totalPixel.setText(Integer.toString((int)newResult.getTotalPixel()));
+			totalArea.setText(String.format("%.2f", newResult.getTotalArea()));
+			graph = newResult.getPixelCalculate().getHashMap_Data();
+			
+			// Show the result on graph
+			plotGraph();
+			
+			// Show the result on table
+			setTable();
+			
+			// Enable the Show Image button
+			btnShowImage.setDisable(false);
+		}
+		else if(newResult.getPixelCalculate().isFlag_NoPink() == true){
+			// Alert box appears if no pink/magenta found 
+	    	Alert alert = new Alert(AlertType.INFORMATION);   		
+	    	alert.setTitle("Information");
+	    	alert.setHeaderText("No Pink or Magenta Pixel");
+	    	alert.setContentText("Image uploaded does not contain either pink or magenta pixel.\nPlease upload a different image.");
+	    	alert.showAndWait();
+		}
 	}
 		
 	// Show result on graph
@@ -162,7 +171,7 @@ public class ControllerResult {
 	    Iterator i = set.iterator();
 	    
 	    while(i.hasNext()) {
-	        Map.Entry me = (Map.Entry)i.next();	        
+	        Map.Entry me = (Map.Entry)i.next();
 	        series.getData().add(new XYChart.Data<Integer, Integer>((int)me.getKey(),(int)me.getValue()));
 	    }
 	    
@@ -196,11 +205,12 @@ public class ControllerResult {
 	@FXML
 	private void onClickPopup() throws IOException {	
 		
-		Stage stage; 
-	    Parent root;
-	    stage = (Stage)btnShowImage.getScene().getWindow();	    
+	    Parent root;	    
 	    root = FXMLLoader.load(getClass().getResource("GUI_ShowImage.fxml"));
+	    Stage stage = new Stage(); 
 	    Scene scene = new Scene(root);
+	    stage.setTitle("Segmented Image");
+	    stage.initStyle(StageStyle.UNDECORATED);
 	    stage.setScene(scene);
 	    stage.show();
 	}

@@ -53,6 +53,7 @@ public class ControllerPopup implements Initializable {
 	private ImageView iv = new ImageView();
 		
 	private int saved = 0;
+	private Stage stage;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -108,20 +109,7 @@ public class ControllerPopup implements Initializable {
 	}
 	
 	@FXML
-	private void onClickBack() throws IOException {
-		
-		Stage stage; 
-	    Parent root;
-	    stage=(Stage)btnBack.getScene().getWindow();
-	    root = FXMLLoader.load(getClass().getResource("GUI_Result.fxml"));
-	    Scene scene = new Scene(root);
-	    stage.setScene(scene);
-	    stage.show();
-	}
-	
-	@FXML
-	private void onClickExit() throws IOException{
-		
+	private void onClickBack() throws IOException {		
 		if(saved == 0){
 			
 			// Show confirmation dialog to save the image
@@ -133,15 +121,21 @@ public class ControllerPopup implements Initializable {
 			if (alert.getResult() == ButtonType.YES) {
 				onClickSave();
 			}else if(alert.getResult() == ButtonType.NO){
-				
-				// Close the application
-				exit();
+				stage=(Stage)btnBack.getScene().getWindow();
+			    stage.close();
 			}
-		}else{
-			
+		}else{			
 			// Close the application
-			exit();
+			stage=(Stage)btnBack.getScene().getWindow();
+			stage.close();
+			//exit();
 		}
+	}
+	
+	@FXML
+	private void onClickExit() throws IOException{
+		
+		
 	}
 	
 	private void exit() throws IOException{
