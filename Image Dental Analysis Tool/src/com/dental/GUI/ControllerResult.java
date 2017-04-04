@@ -144,7 +144,9 @@ public class ControllerResult {
 		}
 		else if(newResult.getPixelCalculate().isFlag_NoPink() == true){
 			// Alert box appears if no pink/magenta found 
-	    	Alert alert = new Alert(AlertType.INFORMATION);   		
+	    	Alert alert = new Alert(AlertType.INFORMATION);   
+	    	DialogPane dialogPane = alert.getDialogPane();
+			dialogPane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	    	alert.setTitle("Information");
 	    	alert.setHeaderText("No Pink or Magenta Pixel");
 	    	alert.setContentText("Image uploaded does not contain either pink or magenta pixel.\nPlease upload a different image.");

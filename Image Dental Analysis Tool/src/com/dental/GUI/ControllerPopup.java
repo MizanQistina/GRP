@@ -5,19 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
-import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -128,7 +122,6 @@ public class ControllerPopup implements Initializable {
 			// Close the application
 			stage=(Stage)btnBack.getScene().getWindow();
 			stage.close();
-			//exit();
 		}
 	}
 	
@@ -136,13 +129,6 @@ public class ControllerPopup implements Initializable {
 	private void onClickExit() throws IOException{
 		
 		
-	}
-	
-	private void exit() throws IOException{
-		Files.deleteIfExists(Paths.get("resource/saved.jpg"));
-		Files.deleteIfExists(Paths.get("resource/segmented.jpg"));
-		Platform.exit();
-		System.exit(0);
 	}
 	
 	// Save the segmented file

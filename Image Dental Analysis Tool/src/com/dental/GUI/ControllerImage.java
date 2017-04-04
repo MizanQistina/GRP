@@ -252,10 +252,12 @@ public class ControllerImage extends Main implements Initializable {
 				toggleManualEnhance.setDisable(true);
 		    	
 		    	// Alert box appears when if statement is true 
-		    	Alert alert = new Alert(AlertType.ERROR);   		
+		    	Alert alert = new Alert(AlertType.ERROR);   	
+		    	DialogPane dialogPane = alert.getDialogPane();
+				dialogPane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		    	alert.setTitle("Error");
-		    	alert.setHeaderText("Uploaded Failed");
-		    	alert.setContentText("Upload image less than 1.1 mbs");
+		    	alert.setHeaderText("Upload Fail");
+		    	alert.setContentText("Image to be uploaded must be less than 1.0 MB");
 		    	alert.showAndWait();		    	
 		    }
 		    	
