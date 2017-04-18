@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
    <children>
-      <MenuBar prefHeight="44.0" prefWidth="1065.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar prefHeight="14.0" prefWidth="1065.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
             <items>
@@ -41,7 +41,7 @@
             <Tooltip text="Click Open to open file, Close to close file, Exit to exit this program, About for software information" />
          </tooltip>
       </MenuBar>
-      <Button fx:id="btnNext" layoutX="831.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="50.0" prefWidth="187.0" text="Next &gt;&gt;" textAlignment="CENTER">
+      <Button fx:id="btnNext" layoutX="827.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="62.0" prefWidth="199.0" text="Next &gt;&gt;" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
@@ -81,7 +81,7 @@
              <Font name="Segoe UI Light" size="20.0" />
           </font>
       </Text>
-      <Button fx:id="btnAutoEnhance" layoutX="457.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickAutoEnchance" prefHeight="50.0" prefWidth="187.0" text="Auto-Enhance" textAlignment="CENTER">
+      <Button fx:id="btnAutoEnhance" layoutX="458.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickAutoEnchance" prefHeight="62.0" prefWidth="199.0" text="Auto-Enhance" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>
@@ -92,7 +92,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ToggleButton fx:id="toggleManualEnhance" layoutX="50.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickToggle" prefHeight="50.0" prefWidth="187.0" text="Manual Enhance">
+      <ToggleButton fx:id="toggleManualEnhance" layoutX="50.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickToggle" prefHeight="62.0" prefWidth="199.0" text="Manual Enhance">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>

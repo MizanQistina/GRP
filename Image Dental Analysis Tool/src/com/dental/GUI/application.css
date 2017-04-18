@@ -1,60 +1,78 @@
 /* This file contains css file for GUI - Automated Image Dental Analysis - Last Updated by Tahirah 1/1/2017 */
 
 AnchorPane{
-   -fx-background-color:
-        linear-gradient(#969A9A, #C2C3C3),
-        radial-gradient(center 50% -40%, radius 180%, #E8EAEA 45%, #E8EAEA 80%);
+   -fx-background-color: #FFFFFF;
 }
 
 MenuBar{
-  -fx-background-color:
-        linear-gradient(#969A9A, #969A9A),
-        radial-gradient(center 50% -40%, radius 200%, #1ED7CB 45%, #5EDCD4 50%);
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
+  	-fx-background-color: #e82b63;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+DialogPane{
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #D3D3D3;
 }
 
 .menu-bar .label {
     -fx-font-size: 14pt;
     -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #ffffff;
+}
+
+.menu-item .label {
     -fx-text-fill: #000000;
 }
 
+.menu-item:focused {
+     -fx-background-color: darkgray;
+}
 
 Button{
-  -fx-background-color:
-        linear-gradient(#1ED7CB, #92F6F0),
-        radial-gradient(center 50% 10%, radius 200%, #1ED7CB 45%, #5EDCD4 50%);
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
+  	-fx-background-color: #e82b63;
+    -fx-background-radius: 50, 50, 50, 50;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
     -fx-text-fill: #FFFFFF;
 }
   
-  .button:hover {
-    -fx-background-color: #000000;
+.button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 50, 50, 50, 50;
+    -fx-border-color: #e82b63;
+    -fx-text-fill: #e82b63;
 }
 
-.button:pressed, .button:default:hover:pressed {
-  -fx-background-color: #1ED7CB;
-  -fx-text-fill: #1d1d1d;
-}
-  
-  
 .toggle-button {
-    -fx-background-color:
-        linear-gradient(#1ED7CB, #92F6F0),
-        radial-gradient(center 50% 10%, radius 200%, #1ED7CB 45%, #5EDCD4 50%);
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
+    -fx-background-color: #e82b63;
+    -fx-background-radius: 50, 50, 50, 50;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
     -fx-text-fill: #FFFFFF;
 }
 .toggle-button:selected {
-    -fx-background-color: #000000;
-  	-fx-text-fill: #FFFFFF;
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 50, 50, 50, 50;
+    -fx-border-color: #e82b63;
+    -fx-text-fill: #e82b63;
 }
 .toggle-button:hover {
-    -fx-background-color: #000000;
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 50, 50, 50, 50;
+    -fx-border-color: #e82b63;
+    -fx-text-fill: #e82b63;
+}
+
+.slider .track{
+	-fx-border-color: #e82b63;
+	-fx-border-radius: 50, 50, 50, 50;
+}
+
+.slider .thumb{
+	-fx-border-color: #e82b63;
+	-fx-border-radius: 50, 50, 50, 50;
+}
+
+.slider .thumb:hover{
+	-fx-border-color: #e82b63;
+	-fx-border-radius: 50, 50, 50, 50;
+	-fx-background-color: #e82b63;
 }
