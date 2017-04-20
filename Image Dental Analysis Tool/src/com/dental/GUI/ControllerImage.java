@@ -191,7 +191,7 @@ public class ControllerImage extends Main implements Initializable {
 	    chooser.setTitle("Choose image");
 	    
 	    // File format restrictions - .png, .jpg, .jpeg
-	    chooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg") );             		
+	    chooser.getExtensionFilters().add(new ExtensionFilter("Image Files (*.jpg, *.jpeg)", "*.jpg", "*.jpeg") );             		
 	    selectedfile = chooser.showOpenDialog(new Stage());
 	    
 	    if(selectedfile != null){
