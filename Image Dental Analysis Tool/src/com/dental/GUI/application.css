@@ -69,10 +69,11 @@ Button{
 .slider .thumb{
 	-fx-border-color: #e82b63;
 	-fx-border-radius: 50, 50, 50, 50;
+	-fx-background-color: #e82b63;
 }
 
 .slider .thumb:hover{
-	-fx-border-color: #e82b63;
+	-fx-border-color: darkgray;
 	-fx-border-radius: 50, 50, 50, 50;
-	-fx-background-color: #e82b63;
+	-fx-background-color: darkgray;
 }
