@@ -306,6 +306,7 @@ public class ControllerImage extends Main implements Initializable {
 		
 		// Disable the Manual Enhance toggle button
 		toggleManualEnhance.setDisable(true);
+		toggleManualEnhance.setSelected(false);
 		
 		PreProcessing.setSigmaX(101);
 		PreProcessing.setBeta(-50);
@@ -361,8 +362,7 @@ public class ControllerImage extends Main implements Initializable {
 			iv.setX(120);
 			Preview.getChildren().clear();
 			Preview.getChildren().add(iv);
-		    
-		    
+			
 		    if(!iv.isCache())
 		    {
 				btnNext.setDisable(true);
@@ -383,6 +383,9 @@ public class ControllerImage extends Main implements Initializable {
 			// Disable the Auto Enhance button
 			btnAutoEnhance.setDisable(true);
 			
+			// Disable the Next button
+			btnNext.setDisable(true);
+			
 			// Enable the Sharpness and Brightness slider
 			sharpSlider.setDisable(false);
 			brightSlider.setDisable(false);
@@ -391,11 +394,13 @@ public class ControllerImage extends Main implements Initializable {
 			// Enable the Auto Enhance button
 			btnAutoEnhance.setDisable(false);
 			
+			// Enable the Next button
+			btnNext.setDisable(false);
+			
 			// Disable the Sharpness and Brightness slider
 			sharpSlider.setDisable(true);
 			brightSlider.setDisable(true);
-		}
-		
+		}	    	
 	}
 	
 	@FXML
