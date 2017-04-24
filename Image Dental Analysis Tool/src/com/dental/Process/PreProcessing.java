@@ -18,7 +18,7 @@ public class PreProcessing {
 	private Mat dest;
 	private Mat original_Image;
 	
-	// Variables for adjusting image brightness
+	// Variables for adjusting image sharpness
 	private static double alpha = 1;
 
 	private static double beta = -50;

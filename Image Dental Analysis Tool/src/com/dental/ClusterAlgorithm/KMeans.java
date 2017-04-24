@@ -25,12 +25,14 @@ public class KMeans {
 		this.preprocessImage = image;
 	}
 	
+	// K-Means clustering method
 	public Mat kMeans( ) {
 		
 		dest = cluster(preprocessImage, k);
 		return dest;
 	}
 	
+	// Cluster the region
 	private Mat cluster(Mat cutout, int k) {
 		Mat samples = cutout.reshape(1, cutout.cols() * cutout.rows());
 		Mat samples32f = new Mat();
@@ -42,6 +44,7 @@ public class KMeans {
 		return showClusters(cutout, labels, centers);
 	}
 	
+	// Produce the segmented image
 	private Mat showClusters (Mat cutout, Mat labels, Mat centers) {
 		centers.convertTo(centers, CvType.CV_8UC1, 255.0);
 		centers.reshape(3);

@@ -382,6 +382,9 @@ public class ControllerImage extends Main implements Initializable {
 			btnNext.setDisable(true);
 			System.out.println("File doesn't exist");
 		}
+		
+		PreProcessing.setSigmaX(101);
+		PreProcessing.setBeta(-50);
 	}
 	
 	@FXML

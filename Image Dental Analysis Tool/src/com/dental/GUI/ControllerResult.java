@@ -24,6 +24,8 @@ import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -130,6 +132,15 @@ public class ControllerResult {
 			// Enable the Show Result button
 			btnResult.setDisable(false);
 		}
+		comboCluster.valueProperty().addListener(new ChangeListener<String>(){
+			 @SuppressWarnings("rawtypes")
+			@Override 
+			public void changed(ObservableValue ov, String t, String t1) {
+		          if(comboCluster.valueProperty().isEqualTo("K-Means").toString() != t1){
+		        	  btnShowImage.setDisable(true);
+		          }
+		        }  
+		});
 	}
 	
 	@FXML
