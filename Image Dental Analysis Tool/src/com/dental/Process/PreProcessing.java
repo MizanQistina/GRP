@@ -1,3 +1,11 @@
+/*Copyright (c) 2017 Group 2 UNMC.
+ * 
+ * All rights reserved.
+ * 
+ * This software is made possible by OpenCV and Scene Builder.
+ * 
+ * */
+
 package com.dental.Process;
 
 import org.opencv.core.Core;
@@ -15,7 +23,7 @@ public class PreProcessing {
 
 	private static double beta = -50;
 	
-	// Variables for adjusting image brightness
+	// Variables for adjusting image sharpness
 	private static int sigmaX = 101;
 	
 

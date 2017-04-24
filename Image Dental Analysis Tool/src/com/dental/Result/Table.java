@@ -1,3 +1,11 @@
+/*Copyright (c) 2017 Group 2 UNMC.
+ * 
+ * All rights reserved.
+ * 
+ * This software is made possible by OpenCV and Scene Builder.
+ * 
+ * */
+
 package com.dental.Result;
 
 import javafx.beans.property.SimpleIntegerProperty;

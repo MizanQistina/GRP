@@ -1,3 +1,11 @@
+/*Copyright (c) 2017 Group 2 UNMC.
+ * 
+ * All rights reserved.
+ * 
+ * This software is made possible by OpenCV and Scene Builder.
+ * 
+ * */
+
 package com.dental.GUI;
 
 import java.io.IOException;
@@ -259,7 +267,7 @@ public class ControllerResult {
     	alert.setTitle("Help");
     	alert.setHeaderText("Automated Image Dental Analysis");
     	alert.setContentText("Version 1.0 - Last Updated March 2017\n\n"
-    			+ "Copyright 2017 Group 2 UNMC.\n "
+    			+ "Copyright (c) 2017 Group 2 UNMC.\n "
     			+ "All rights reserved.\n\n"
     			+ "This software is made possible by OpenCV and Scene Builder.\n");
     	alert.showAndWait();
